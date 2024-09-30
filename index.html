@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Higor Souza – Soluções em Automação e Desenvolvimento Python</title>
+    
+    <!-- Adicione o link do Google Fonts aqui -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            color: #fff; /* Texto branco */
+            overflow: hidden; /* Para evitar barras de rolagem */
+        }
+
+        /* Estilo para o vídeo de fundo */
+        .background-video {
+            position: fixed; /* Fixa o vídeo ao fundo */
+            top: 0;
+            left: 0;
+            width: 100%; /* Largura total */
+            height: 100%; /* Altura total */
+            object-fit: cover; /* Faz o vídeo cobrir toda a área */
+            z-index: -1; /* Coloca o vídeo atrás de outros elementos */
+        }
+
+        /* Estilo para a seção inicial */
+        .home {
+            display: flex; /* Usar flexbox para centralizar */
+            justify-content: center; /* Centraliza horizontalmente */
+            align-items: center; /* Centraliza verticalmente */
+            height: 100vh; /* Ocupa toda a altura da tela */
+            transition: opacity 0.5s ease; /* Transição suave para opacidade */
+            opacity: 1; /* Opacidade inicial */
+        }
+
+        /* Estilo para as seções "Sobre Mim", "Projetos" e "Contato" */
+        .sobre-mim, .projetos, .contato {
+            padding: 20px;
+            text-align: center; /* Centraliza o texto da seção */
+            opacity: 0; /* Opacidade inicial */
+            transition: opacity 0.5s ease; /* Transição suave para opacidade */
+            display: none; /* Inicialmente oculto */
+        }
+
+        /* Estilos adicionais */
+        .logo {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+
+        .logo h1 {
+            font-size: 2.5em;
+            color: #FF5722; /* Cor de destaque para o logo */
+        }
+
+        .profile-info {
+            display: flex; /* Exibe a imagem e o texto lado a lado */
+            justify-content: center; /* Centraliza o conteúdo */
+            align-items: center; /* Centraliza verticalmente */
+        }
+
+        .profile-image {
+            width: 20vw; /* Ajuste este valor conforme necessário */
+            height: 20vw; /* Ajuste este valor conforme necessário */
+            max-width: 250px; /* Tamanho máximo da moldura */
+            max-height: 250px; /* Tamanho máximo da moldura */
+            border: 5px solid #FF5722; /* Reduz a espessura da moldura */
+            border-radius: 50%; /* Moldura redonda */
+            padding: 5px; /* Espaçamento entre a imagem e a borda */
+            overflow: hidden; /* Garante que a imagem não exceda a moldura */
+            margin-left: 20px; /* Espaçamento entre o texto e a imagem */
+        }
+
+        .profile-image img {
+            width: 100%; /* Faz com que a imagem ocupe 100% da largura da moldura */
+            height: auto; /* Mantém a proporção da imagem */
+            border-radius: 50%; /* Mantém a imagem redonda */
+            object-fit: cover; /* Ajusta a imagem para cobrir o espaço */
+        }
+
+        /* Títulos das seções */
+        .section-title {
+            background-color: #FF5722; /* Cor da faixa */
+            padding: 10px 0; /* Espaçamento vertical */
+            margin: 0; /* Remove a margem do título */
+            text-align: center; /* Centraliza o título */
+            width: 100%; /* Garante que a faixa ocupe 100% da largura */
+            position: relative; /* Para posicionamento absoluto dos textos */
+        }
+
+        .section-title h2 {
+            margin: 0; /* Remove a margem do título */
+            color: #fff; /* Cor do texto do título */
+            font-size: 1.8em; /* Tamanho da fonte do título */
+        }
+
+        /* Estilo do menu oculto */
+        .menu {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        .menu-icon {
+            font-size: 2em;
+            color: #fff;
+        }
+
+        /* Estilo do menu suspenso */
+        .dropdown {
+            position: absolute;
+            top: 50px;
+            right: 0;
+            background-color: #333;
+            border-radius: 5px;
+            display: none;
+            flex-direction: column;
+        }
+
+        .dropdown a {
+            padding: 10px 20px;
+            text-decoration: none;
+            color: #FF5722;
+            text-align: left;
+        }
+
+        .dropdown a:hover {
+            background-color: #d4d3d3;
+        }
+    
+        .icons {
+            display: flex; /* Exibe os ícones em linha */
+            justify-content: center; /* Centraliza os ícones */
+            margin-top: 10px; /* Espaçamento acima dos ícones */
+        }
+
+        .icons i {
+            font-size: 40px; /* Tamanho dos ícones */
+            color: #FF5722; /* Cor dos ícones */
+            margin: 0 10px; /* Espaçamento entre os ícones */
+            transition: transform 0.3s; /* Efeito de transição */
+        }
+
+        .icons i:hover {
+            transform: scale(1.2); /* Aumenta o ícone ao passar o mouse */
+        }
+
+        .custom-icon {
+        width: 40px; /* Ajuste o tamanho conforme necessário */
+        color: #FF5722; /* Cor dos ícones */
+        height: auto; /* Mantém a proporção */
+        margin: 0 10px; /* Espaçamento entre os ícones */
+        }
+
+    </style>
+</head>
+<body>
+
+    <video class="background-video" autoplay muted loop>
+        <source src="estrelas.mp4" type="video/mp4">
+        Seu navegador não suporta vídeos.
+    </video>
+
+    <!-- Ícone do Menu -->
+    <div class="menu">
+        <span class="menu-icon">&#9776;</span> <!-- ícone de "menu" -->
+        <div class="dropdown">
+            <a href="#home">Home Page</a>
+            <a href="#sobre-mim">Sobre Mim</a>
+            <a href="#projetos">Projetos</a>
+            <a href="#contato">Contato</a>
+        </div>
+    </div>
+    
+    <div class="home" id="home">
+        <div class="logo">
+            <div class="icons">
+                <i class="fa-brands fa-python fa-beat"></i> <!-- Ícone de Código -->
+                <img src="chat-gpt.png" alt="Seu Ícone" class="custom-icon beat-effect"> <!-- Ícone Personalizado com Efeito -->
+                <i class="fa-solid fa-robot fa-beat"></i> <!-- Ícone de E-mail -->
+            </div>
+        </div>
+        <div class="main-content">
+            <div class="profile-info">
+                <div class="text-info">
+                    <h2>Olá, me chamo Higor.<br>Muito prazer.</h2>
+                    <p>Soluções Inteligentes para Problemas Cotidianos.</p>
+                </div>
+                <div class="profile-image">
+                    <img src="higor.jpg" alt="Foto de Higor Souza">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Seção Sobre Mim -->
+    <div class="sobre-mim" id="sobre-mim">
+        <div class="section-title">
+            <h2>Sobre Mim</h2>
+        </div>
+        <div class="profile-info">
+            <div class="text-info">
+                <h3>Higor Souza Pacheco Silva</h3>
+                <p><strong>Idade:</strong> 25 anos</p>
+                <p><strong>Descrição:</strong> Sou um Analista de Sistemas Jr. Aspirante a desenvolvedor Python. Tenho experiência em criar automações para otimizar processos diários no trabalho, além de conhecimento em Power Automate para a construção de bots de envio de mensagens. Estou sempre em busca de novas formas de aplicar tecnologia para resolver problemas e aumentar a eficiência. Entusiasta do ChatGPT, utilizo ferramentas de IA para aprimorar a produtividade e o aprendizado contínuo.</p>
+                <p><strong>Local:</strong> Cotia, SP</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Seção Projetos -->
+    <div class="projetos" id="projetos">
+        <div class="section-title">
+            <h2>Projetos</h2>
+        </div>
+        <div class="profile-info">
+            <div class="text-info">
+                <h3>Projeto Jarvis</h3>
+                <p>25 anos</p>
+                <h3>Projeto Portfólio</h3>
+                <p><strong>Descrição:</strong> Sou um Analista de Sistemas Jr. Aspirante a desenvolvedor Python. Tenho experiência em criar automações para otimizar processos diários no trabalho, além de conhecimento em Power Automate para a construção de bots de envio de mensagens. Estou sempre em busca de novas formas de aplicar tecnologia para resolver problemas e aumentar a eficiência. Entusiasta do ChatGPT, utilizo ferramentas de IA para aprimorar a produtividade e o aprendizado contínuo.</p>
+                <h3>Projeto Consolidador de Planilhas Automático</h3>
+                <p><strong>Local:</strong> Cotia, SP</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Seção Contato -->
+    <div class="contato" id="contato">
+        <div class="section-title">
+            <h2>Contato</h2>
+        </div>
+        <div class="profile-info">
+            <div class="text-info">
+                <h3>Higor Souza Pacheco Silva</h3>
+                <p><strong>Idade:</strong> 25 anos</p>
+                <p><strong>Descrição:</strong> Sou um Analista de Sistemas Jr. Aspirante a desenvolvedor Python. Tenho experiência em criar automações para otimizar processos diários no trabalho, além de conhecimento em Power Automate para a construção de bots de envio de mensagens. Estou sempre em busca de novas formas de aplicar tecnologia para resolver problemas e aumentar a eficiência. Entusiasta do ChatGPT, utilizo ferramentas de IA para aprimorar a produtividade e o aprendizado contínuo.</p>
+                <p><strong>Local:</strong> Cotia, SP</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Exibe/oculta o menu dropdown
+        document.querySelector('.menu-icon').addEventListener('click', () => {
+            const dropdownMenu = document.querySelector('.dropdown');
+            dropdownMenu.style.display = dropdownMenu.style.display === 'flex' ? 'none' : 'flex';
+        });
+    
+        // Transição entre seções
+        const sections = document.querySelectorAll('.sobre-mim, .projetos, .contato');
+        const homeSection = document.querySelector('.home');
+    
+        sections.forEach(section => {
+            section.style.opacity = '0'; // Inicialmente oculto
+        });
+    
+        document.querySelectorAll('.dropdown a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = e.target.getAttribute('href').substring(1); // Remove o #
+                const targetSection = document.getElementById(targetId);
+    
+                // Oculta a seção inicial e exibe a seção selecionada
+                homeSection.style.opacity = '0';
+                homeSection.style.display = 'none';
+    
+                sections.forEach(section => {
+                    section.style.opacity = '0';
+                    section.style.display = 'none'; // Oculta todas as seções
+                });
+    
+                targetSection.style.display = 'block'; // Exibe a seção selecionada
+                setTimeout(() => {
+                    targetSection.style.opacity = '1'; // Torna visível após um breve delay
+                }, 100); // Tempo do delay para a transição
+            });
+        });
+    
+        // Para voltar à home
+        document.querySelector('.menu a[href="#home"]').addEventListener('click', () => {
+            homeSection.style.display = 'flex'; // Mostra a seção inicial
+            homeSection.style.opacity = '1'; // Torna visível
+            sections.forEach(section => {
+                section.style.display = 'none'; // Oculta todas as seções
+            });
+        });
+    </script>
+    
+</body>
+</html>
