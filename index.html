@@ -8,207 +8,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
 
-    <style>
-        body {
-            margin: 0;
-            font-family: 'Roboto', sans-serif;
-            background-image: url('background.jpg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            color: #fff;
-            transition: background-position 0.3s ease;
-            /* Suaviza o movimento */
-        }
-
-        /* Estilo para a seção inicial */
-        .home {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            transition: opacity 1s ease;
-            opacity: 1;
-        }
-
-        /* Estilo para as seções "Sobre Mim", "Projetos" e "Contato" */
-        .sobre-mim,
-        .projetos,
-        .contato {
-            padding: 20px;
-            text-align: center;
-            opacity: 0;
-            transition: opacity 1s ease, transform 0.5s ease;
-            /* Adicionando uma transição para o efeito de entrada */
-            display: none;
-            transform: translateY(20px);
-            /* Move as seções para baixo inicialmente */
-        }
-
-        /* Estilos adicionais */
-        .logo {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-        }
-
-        .logo h1 {
-            font-size: 2.5em;
-            color: #FF5722;
-        }
-
-        .profile-info {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .profile-image {
-            width: 20vw;
-            height: 20vw;
-            max-width: 250px;
-            max-height: 250px;
-            border: 5px solid #FF5722;
-            border-radius: 50%;
-            padding: 5px;
-            overflow: hidden;
-            margin-left: 20px;
-        }
-
-        .profile-image img {
-            width: 100%;
-            height: auto;
-            border-radius: 50%;
-            object-fit: cover;
-        }
-
-        /* Títulos das seções */
-        .section-title {
-            background-color: #FF5722;
-            padding: 10px 0;
-            margin: 0;
-            text-align: center;
-            width: 100%;
-            position: relative;
-        }
-
-        .section-title h2 {
-            margin: 0;
-            color: #fff;
-            font-size: 1.8em;
-        }
-
-        /* Estilo do menu oculto */
-        .menu {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            cursor: pointer;
-            z-index: 10;
-        }
-
-        .menu-icon {
-            font-size: 2em;
-            color: #fff;
-            transition: transform 0.3s;
-            /* Transição ao passar o mouse */
-        }
-
-        .menu-icon:hover {
-            transform: scale(1.1);
-            /* Aumenta o ícone ao passar o mouse */
-        }
-
-        /* Estilo do menu suspenso */
-        .dropdown {
-            position: absolute;
-            top: 50px;
-            right: 0;
-            background-color: #333;
-            border-radius: 5px;
-            display: none;
-            flex-direction: column;
-            transition: opacity 0.3s ease;
-            /* Suaviza a transição de opacidade */
-            opacity: 0;
-            /* Inicialmente invisível */
-            transform: translateY(-10px);
-            /* Move o menu para cima inicialmente */
-        }
-
-        .dropdown.show {
-            display: flex;
-            opacity: 1;
-            /* Torna visível quando exibido */
-            transform: translateY(0);
-            /* Move o menu para a posição original */
-        }
-
-        .dropdown a {
-            padding: 10px 20px;
-            text-decoration: none;
-            color: #FF5722;
-            text-align: left;
-            transition: background-color 0.3s ease;
-            /* Transição ao passar o mouse */
-        }
-
-        .dropdown a:hover {
-            background-color: #d4d3d3;
-        }
-
-        .icons {
-            display: flex;
-            /* Exibe os ícones em linha */
-            justify-content: center;
-            /* Centraliza os ícones */
-            margin-top: 10px;
-            /* Espaçamento acima dos ícones */
-        }
-
-        .icons i {
-            font-size: 40px;
-            /* Tamanho dos ícones */
-            color: #FF5722;
-            /* Cor dos ícones */
-            margin: 0 10px;
-            /* Espaçamento entre os ícones */
-            transition: transform 0.3s;
-            /* Efeito de transição */
-        }
-
-        .icons i:hover {
-            transform: scale(1.2);
-            /* Aumenta o ícone ao passar o mouse */
-        }
-
-        .custom-icon {
-            width: 40px;
-            /* Ajuste o tamanho conforme necessário */
-            color: #FF5722;
-            /* Cor dos ícones */
-            height: auto;
-            /* Mantém a proporção */
-            margin: 0 10px;
-            /* Espaçamento entre os ícones */
-        }
-
-        .section-enter {
-            transform: translateX(-100%);
-            /* Começa fora da tela à esquerda */
-            opacity: 0;
-            /* Começa invisível */
-            transition: transform 0.5s ease, opacity 0.5s ease;
-            /* Define a transição */
-        }
-
-        .section-enter-active {
-            transform: translateX(0);
-            /* Move para a posição original */
-            opacity: 1;
-            /* Torna visível */
-        }
-    </style>
 </head>
 
 <body>
@@ -292,9 +91,8 @@
         </div>
         <div class="profile-info">
             <div class="text-info">
-                <h3>Higor Souza Pacheco Silva</h3>
-                <p><strong>Telefone:</strong> texto</p>
-                <p><strong>E-mail:</strong>Texto </p>
+                <p><strong>Number:</strong> 12345</p>
+                <p><strong>E-mail:</strong> 12345</p>
                 <p><strong>Local:</strong> Cotia, SP</p>
             </div>
         </div>
@@ -304,62 +102,101 @@
         // Exibe/oculta o menu dropdown
         document.querySelector('.menu-icon').addEventListener('click', () => {
             const dropdownMenu = document.querySelector('.dropdown');
-            const isVisible = dropdownMenu.classList.toggle('show'); // Adiciona/remova a classe show
+            dropdownMenu.classList.toggle('show'); // Adiciona/remova a classe show
+            dropdownMenu.style.display = dropdownMenu.classList.contains('show') ? 'flex' : 'none'; // Mostra/oculta o menu
+        });
     
-            if (isVisible) {
-                dropdownMenu.style.display = 'flex'; // Mostra o menu
-            } else {
-                dropdownMenu.style.display = 'none'; // Oculta o menu
+        // Função de transição suave entre as seções
+        const sections = document.querySelectorAll('.sobre-mim, .projetos, .contato');
+        const homeSection = document.querySelector('.home');
+        const allSections = [homeSection, ...sections];
+        let currentSectionIndex = 0; // Índice da seção visível atual
+    
+        // Inicializa as seções
+        allSections.forEach(section => {
+            section.classList.add('section-enter');
+        });
+    
+        // Função para alterar a seção visível
+        function changeSection(nextIndex) {
+            if (nextIndex >= 0 && nextIndex < allSections.length) {
+                // Oculta a seção atual
+                const currentSection = allSections[currentSectionIndex];
+                currentSection.classList.remove('section-enter-active');
+                currentSection.style.opacity = '0';
+                setTimeout(() => currentSection.style.display = 'none', 500);
+    
+                // Exibe a próxima seção
+                const nextSection = allSections[nextIndex];
+                setTimeout(() => {
+                    nextSection.style.display = nextIndex === 0 ? 'flex' : 'block'; // Garante o 'display: flex' na home
+                    setTimeout(() => {
+                        nextSection.classList.add('section-enter-active');
+                        nextSection.style.opacity = '1';
+                    }, 50);
+                }, 500);
+    
+                // Atualiza o índice da seção atual
+                currentSectionIndex = nextIndex;
+            }
+        }
+    
+        // Detecta o scroll do mouse e navega pelas seções
+        let isScrolling = false;
+        document.addEventListener('wheel', (event) => {
+            if (!isScrolling) {
+                isScrolling = true;
+                if (event.deltaY > 0) {
+                    // Rolando para baixo
+                    changeSection(currentSectionIndex + 1);
+                } else {
+                    // Rolando para cima
+                    changeSection(currentSectionIndex - 1);
+                }
+                setTimeout(() => isScrolling = false, 1000); // Espera 1 segundo para a próxima navegação
             }
         });
     
-        // Transição entre seções
-        const sections = document.querySelectorAll('.sobre-mim, .projetos, .contato');
-        const homeSection = document.querySelector('.home');
-    
-        sections.forEach(section => {
-            section.classList.add('section-enter'); // Adiciona a classe inicial
-        });
-    
+        // Ações de clique no menu dropdown
         document.querySelectorAll('.dropdown a').forEach(link => {
             link.addEventListener('click', (e) => {
                 e.preventDefault();
-                const targetId = e.target.getAttribute('href').substring(1); // Remove o #
+                const targetId = e.target.getAttribute('href').substring(1);
                 const targetSection = document.getElementById(targetId);
+                const targetIndex = Array.from(allSections).indexOf(targetSection);
     
-                // Oculta a seção inicial e remove a classe de animação das seções
-                homeSection.style.opacity = '0';
-                homeSection.style.display = 'none';
-    
-                sections.forEach(section => {
-                    section.classList.remove('section-enter-active'); // Remove a classe ativa
-                    section.style.display = 'none'; // Oculta todas as seções
-                });
-    
-                targetSection.style.display = 'block'; // Exibe a seção selecionada
-                setTimeout(() => {
-                    targetSection.classList.add('section-enter-active'); // Adiciona a classe ativa
-                }, 100); // Tempo do delay para a transição
+                changeSection(targetIndex);
             });
         });
     
-        // Para voltar à home
+        // Para voltar à home ao clicar no link "Home Page"
         document.querySelector('.menu a[href="#home"]').addEventListener('click', () => {
-            homeSection.style.display = 'flex'; // Mostra a seção inicial
-            homeSection.style.opacity = '1'; // Torna visível
-            sections.forEach(section => {
-                section.style.display = 'none'; // Oculta todas as seções
-            });
+            changeSection(0); // Volta para a home
         });
     
         // Função para mover a imagem de fundo com o mouse
         document.addEventListener('mousemove', (event) => {
-            const x = (event.clientX / window.innerWidth) * 100; // Posição X em porcentagem
-            const y = (event.clientY / window.innerHeight) * 100; // Posição Y em porcentagem
-            document.body.style.backgroundPosition = `${x}% ${y}%`; // Atualiza a posição da imagem de fundo
+            const x = (event.clientX / window.innerWidth) * 100;
+            const y = (event.clientY / window.innerHeight) * 100;
+            document.body.style.backgroundPosition = `${x}% ${y}%`;
+        });
+    
+        // Seleciona todos os elementos de texto que você deseja afetar
+        const textElements = document.querySelectorAll('h1, h2, h3, p'); // Adicione outros seletores conforme necessário
+    
+        textElements.forEach(element => {
+            // Adiciona o evento mouseover
+            element.addEventListener('mouseover', () => {
+                element.classList.add('enlarge'); // Adiciona a classe de aumento
+            });
+    
+            // Adiciona o evento mouseout
+            element.addEventListener('mouseout', () => {
+                element.classList.remove('enlarge'); // Remove a classe de aumento
+            });
         });
     </script>
-
+    
 </body>
 
 </html>
