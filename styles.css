@@ -1,4 +1,45 @@
-/* Logo no canto superior esquerdo */
+/* Estilos do arquivo original */
+
+/* Corpo da página */
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  background-image: url('background.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: #fff;
+  transition: background-position 0.3s ease;
+}
+
+/* Estilo para a seção inicial */
+.home {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(46, 45, 45, 0.5)), url('background.jpg');
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Isso garante que a altura da home ocupe toda a tela */
+  transition: opacity 1s ease;
+  opacity: 1;
+
+}
+
+/* Estilo para as seções "Sobre Mim", "Projetos" e "Contato" */
+.sobre-mim, .projetos, .contato {
+  padding: 20px;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 1s ease, transform 0.5s ease;
+  display: none;
+  transform: translateY(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1); /* Borda */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Sombra */
+  border-radius: 8px; /* Bordas arredondadas */
+  backdrop-filter: blur(10px); /* Efeito de desfoque no fundo */
+}
+
+
+/* Estilos adicionais */
 .logo {
   position: absolute;
   top: 20px;
@@ -7,157 +48,186 @@
 
 .logo h1 {
   font-size: 2.5em;
-  color: #fa55de; /* Cor de destaque para o logo */
+  color: #FF5722;
 }
 
-/* Container principal */
-.container {
-  display: flex; /* Usa flexbox para alinhar o texto e a imagem */
-  align-items: center; /* Alinha verticalmente ao centro */
-  justify-content: center; /* Centraliza o conteúdo */
-  height: 80vh; /* Ocupa 80% da altura da tela para deixar espaço para a parte de baixo */
-  padding: 20px;
-}
-
-/* Texto principal ao lado da imagem */
-.main-content {
-  text-align: center; /* Centraliza o texto */
-}
-
-.main-content h2 {
-  font-size: 3.5em;
-  margin-top: 20px;
-  color: #FF5722; /* Texto grande em amarelo-esverdeado */
-}
-
-.main-content p {
-  font-size: 1.5em;
-  margin-top: 10px;
-}
-
-/* Estilo para a imagem */
 .profile-info {
-  display: flex; /* Exibe a imagem e o texto lado a lado */
-  justify-content: center; /* Centraliza o conteúdo dentro deste contêiner */
-  align-items: center; /* Centraliza verticalmente */
-  text-align: left; /* Garante que o texto na div profile-info fique alinhado à esquerda */
+  display: flex;
+  justify-content: left;
+  align-items: center;
 }
 
 .profile-image {
-  width: 20vw; /* Ajuste este valor conforme necessário */
-  height: 20vw; /* Ajuste este valor conforme necessário */
-  max-width: 250px; /* Tamanho máximo da moldura */
-  max-height: 250px; /* Tamanho máximo da moldura */
-  border: 5px solid #060703; /* Reduz a espessura da moldura */
-  border-radius: 50%; /* Moldura redonda */
-  padding: 5px; /* Espaçamento entre a imagem e a borda */
-  overflow: hidden; /* Garante que a imagem não exceda a moldura */
-  margin-left: 20px; /* Espaçamento entre o texto e a imagem */
+  width: 20vw;
+  height: 20vw;
+  max-width: 250px;
+  max-height: 250px;
+  border: 5px solid #FF5722;
+  border-radius: 50%;
+  padding: 5px;
+  overflow: hidden;
+  margin-left: 20px;
 }
 
 .profile-image img {
-  width: 100%; /* Faz com que a imagem ocupe 100% da largura da moldura */
-  height: auto; /* Mantém a proporção da imagem */
-  border-radius: 50%; /* Mantém a imagem redonda */
-  object-fit: cover; /* Ajusta a imagem para cobrir o espaço */
+  width: 100%;
+  height: auto;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
-/* Títulos das seções */
+/* Títulos das seções e faixa*/
 .section-title {
-  background-color: #241799; /* Cor da faixa */
-  padding: 10px 0; /* Espaçamento vertical */
-  margin: 0; /* Remove margem padrão */
-  text-align: center; /* Alinha o título ao centro */
+  background-color: #FF5722;
+  padding: 10px 0;
+  margin: 0;
+  text-align: center;
+  width: 100%;
+  position: relative;
 }
 
-/* Seções adicionais */
-.additional-info {
+.section-title h2 {
+  margin: 0;
   color: #fff;
-  padding: 20px;
-  margin: 20px 0; /* Espaçamento entre seções */
-  text-align: center; /* Centraliza o texto */
-  opacity: 0; /* Começa invisível */
-  transform: translateX(-50px); /* Move para a esquerda */
-  transition: opacity 0.5s ease, transform 0.5s ease; /* Define a transição */
+  font-size: 1.8em;
 }
 
-.additional-info.visible {
-  opacity: 1; /* Torna visível */
-  transform: translateX(0); /* Retorna à posição original */
-}
-
-/* Menu */
+/* Menu oculto */
 .menu {
   position: fixed;
   top: 20px;
   right: 20px;
-  z-index: 1000; /* Garante que o menu esteja acima de outros elementos */
+  cursor: pointer;
+  z-index: 10;
 }
 
 .menu-icon {
-  font-size: 24px; /* Tamanho do ícone do menu */
-  cursor: pointer; /* Muda o cursor ao passar o mouse */
+  font-size: 2em;
+  color: #fff;
+  transition: transform 0.3s;
 }
 
-.menu-content {
-  display: none; /* Oculta o menu por padrão */
-  position: absolute; /* Posiciona o menu relativo ao ícone */
-  top: 40px; /* Espaço abaixo do ícone */
-  right: 0; /* Alinha à direita */
-  background-color: white; /* Cor de fundo do menu */
-  border: 1px solid #040501; /* Borda do menu */
-  border-radius: 5px; /* Bordas arredondadas */
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra para o menu */
+.menu-icon:hover {
+  transform: scale(1.1);
 }
 
-.menu-content.active {
-  display: block; /* Exibe o menu quando ativo */
-}
-
-.menu-content a {
-  display: block; /* Cada item do menu ocupa uma linha */
-  padding: 10px 15px; /* Espaçamento interno */
-  color: #333; /* Cor do texto */
-  text-decoration: none; /* Remove o sublinhado */
-}
-
-.menu-content a:hover {
-  background-color: #3b19ff; /* Cor de fundo ao passar o mouse */
-  color: white; /* Cor do texto ao passar o mouse */
-}
-
-/* Alinha o texto das seções à esquerda */
-.text-info,
-.project {
-  text-align: left; /* Alinha o texto à esquerda */
-  margin: 10px 20px; /* Margem superior e inferior de 10px, lateral de 20px */
-}
-
-/* Adicione esta classe para controle de visibilidade */
-.hidden {
+/* Transição suave para o menu */
+.dropdown {
+  position: absolute;
+  top: 50px;
+  right: 0;
+  background-color: #333;
+  border-radius: 5px;
   display: none;
+  flex-direction: column;
+  transition: opacity 0.3s ease, transform 0.3s ease;
   opacity: 0;
+  transform: translateY(-10px);
 }
-.sobre-mim, .projetos, .contato {
+
+.dropdown.show {
+  display: flex;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.dropdown a {
+  padding: 10px 20px;
+  text-decoration: none;
+  color: #FF5722;
+  text-align: left;
+  transition: background-color 0.3s ease;
+}
+
+.dropdown a:hover {
+  background-color: #d4d3d3;
+}
+
+.icons {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.icons i {
+  font-size: 40px;
+  color: #FF5722;
+  margin: 0 10px;
+  transition: transform 0.3s;
+}
+
+.icons i:hover {
+  transform: scale(1.2);
+}
+
+.custom-icon {
+  width: 40px;
+  color: #ff5722;
+  height: auto;
+  margin: 0 10px;
+}
+
+.section-enter {
+  opacity: 100;
+  transition: opacity 0.5s ease-in;
+}
+
+/* Ao adicionar a classe ativa, a seção aparece e desliza */
+.section-enter-active {
+  opacity: 1;
+}
+
+/* Container principal */
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
   padding: 20px;
-  text-align: left; /* Alinha o texto à esquerda */
-  opacity: 0; /* Opacidade inicial */
-  transition: opacity 0.5s ease; /* Transição suave para opacidade */
-  display: none; /* Inicialmente oculto */
+  overflow: hidden; /* Impede que elementos transbordem */
+
+}
+
+/* Texto principal ao lado da imagem */
+.main-content h2 {
+  font-size: 3.5em;
+  margin-top: 20px;
+  color: #FF5722;
+}
+
+/* Estilo para a imagem */
+.profile-image {
+  border: 5px solid #ff5722;
+}
+
+/* Outros ajustes */
+.text-info, .project {
+  text-align: left;
 }
 
 .beat-effect {
-  animation: beat 1s infinite; /* Define a animação */
+  animation: beat 1s infinite;
 }
 
 @keyframes beat {
-  0% {
-      transform: scale(1);
-  }
-  50% {
-      transform: scale(1.2); /* Aumenta o tamanho */
-  }
-  100% {
-      transform: scale(1);
-  }
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
 }
+
+.section-title h2 {
+  transition: transform 0.3s;
+}
+.section-title h2:hover {
+  transform: scale(1.02);
+}
+
+h2 {
+  font-size: 2em;
+  font-weight: bold;
+}
+p {
+  line-height: 1.6;
+  font-size: 1.1em;
+}
+
