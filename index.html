@@ -53,14 +53,17 @@
         </div>
         <div class="profile-info">
             <div class="text-info">
-                <h3>Higor Souza Pacheco Silva</h3>
-                <p><strong>Idade:</strong> 25 anos</p>
-                <p><strong>Descrição:</strong> Sou um Analista de Sistemas Jr. Aspirante a desenvolvedor Python. Tenho
-                    experiência em criar automações para otimizar processos diários no trabalho, além de conhecimento em
-                    Power Automate para a construção de bots de envio de mensagens. Estou sempre em busca de novas
-                    formas de aplicar tecnologia para resolver problemas e aumentar a eficiência. Entusiasta do ChatGPT,
-                    utilizo ferramentas de IA para aprimorar a produtividade e o aprendizado contínuo.</p>
-                <p><strong>Local:</strong> Cotia, SP</p>
+                <section id="sobre-mim">
+                    <h2>Olá!</h2>
+                    <p>Me chamo Higor Souza, tenho 25 anos.</p>
+                    <p>Sou um Analista de Sistemas Jr. Aspirante a desenvolvedor Python. Tenho experiência em criar
+                        automações para otimizar processos diários no trabalho, além de conhecimento em Power Automate
+                        para a construção de bots de envio de mensagens.</p>
+                    <p>Estou sempre em busca de novas formas de aplicar tecnologia para resolver problemas e aumentar a
+                        eficiência. Entusiasta do ChatGPT, utilizo ferramentas de IA para aprimorar a produtividade e o
+                        aprendizado contínuo.</p>
+                </section>
+
             </div>
         </div>
     </div>
@@ -70,16 +73,38 @@
         <div class="section-title">
             <h2>Projetos</h2>
         </div>
-        <div class="profile-info">
-            <div class="text-info">
-                <h3>Projeto Jarvis</h3>
-                <p><strong>Inicio:</strong>September - In Development</p>
-                <p>I'm developing a virtual assistant inspired by Jarvis, focusing on automation and voice commands. The project includes functionalities such as activation by command, control of devices like smart lamps, adjustment of Windows volume, and execution of routine tasks. The code has been modularized for easier maintenance, and I'm integrating new features like current temperature checking and intelligent responses. This project is a fusion of Python, AI, and automation, aimed at increasing productivity and providing a personalized digital assistant experience.</p>
-                <h3>Projeto Portfólio</h3>
-                <p><strong>Início:</strong>September - In Development</p>
-                <p>I'm developing a personal portfolio using HTML and CSS, with the goal of showcasing my skills as a Junior Systems Analyst and my automation projects. The portfolio features a clean and modern structure, focused on usability and responsive design, and includes details about my knowledge in Python, AI-driven automation, and tools like Power Automate.</p>
-                <h3>Projeto Consolidador de Planilhas Automático</h3>
-                <p><strong>Local:</strong> Cotia, SP</p>
+        <div class="project-cards">
+            <div class="project-card">
+                <div class="project-header">
+                    <h3>Projeto Jarvis</h3>
+                    <p><strong>Início:</strong>Em Desenvolvimento</p>
+                </div>
+                <p>Estou desenvolvendo um assistente virtual inspirado no Jarvis, focado em automação e comandos de voz.
+                    O projeto inclui funcionalidades como ativação por comando, controle de dispositivos como lâmpadas
+                    inteligentes, ajuste de volume do Windows e execução de tarefas rotineiras. O código foi
+                    modularizado para facilitar a manutenção, e estou integrando novos recursos como verificação de
+                    temperatura atual e respostas inteligentes.</p>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <h3>Projeto Portfólio</h3>
+                    <p><strong>Início:</strong>Em Desenvolvimento</p>
+                </div>
+                <p>Estou desenvolvendo um portfólio pessoal usando HTML e CSS, com o objetivo de mostrar minhas
+                    habilidades como Analista de Sistemas Jr. e meus projetos de automação. O portfólio possui uma
+                    estrutura limpa e moderna, focada em usabilidade e design responsivo, e inclui detalhes sobre meu
+                    conhecimento em Python, automação com IA e ferramentas como Power Automate.</p>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <h3>Projeto Consolidador de Planilhas Automático</h3>
+                    <p><strong>Início:</strong>Concluído</p>
+                </div>
+                <p>Este projeto visa automatizar o processo de consolidação de planilhas em um único arquivo. Ele
+                    utiliza Python para integrar diferentes fontes de dados, realizar cálculos e gerar relatórios
+                    automaticamente, economizando tempo e reduzindo erros humanos no processo.</p>
             </div>
         </div>
     </div>
@@ -99,24 +124,31 @@
     </div>
 
     <script>
-        // Exibe/oculta o menu dropdown
+        // Exibe/oculta o menu dropdown ao clicar
         document.querySelector('.menu-icon').addEventListener('click', () => {
             const dropdownMenu = document.querySelector('.dropdown');
-            dropdownMenu.classList.toggle('show'); // Adiciona/remova a classe show
-            dropdownMenu.style.display = dropdownMenu.classList.contains('show') ? 'flex' : 'none'; // Mostra/oculta o menu
+
+            // Alterna a classe show para exibir/ocultar com animação
+            dropdownMenu.classList.toggle('show');
         });
-    
+
+        // Fecha o menu dropdown quando o mouse sair de cima
+        document.querySelector('.dropdown').addEventListener('mouseleave', () => {
+            const dropdownMenu = document.querySelector('.dropdown');
+            dropdownMenu.classList.remove('show'); // Remove a classe show para ocultar
+        });
+
         // Função de transição suave entre as seções
         const sections = document.querySelectorAll('.sobre-mim, .projetos, .contato');
         const homeSection = document.querySelector('.home');
         const allSections = [homeSection, ...sections];
         let currentSectionIndex = 0; // Índice da seção visível atual
-    
+
         // Inicializa as seções
         allSections.forEach(section => {
             section.classList.add('section-enter');
         });
-    
+
         // Função para alterar a seção visível
         function changeSection(nextIndex) {
             if (nextIndex >= 0 && nextIndex < allSections.length) {
@@ -125,7 +157,18 @@
                 currentSection.classList.remove('section-enter-active');
                 currentSection.style.opacity = '0';
                 setTimeout(() => currentSection.style.display = 'none', 500);
-    
+
+                // Se for para mudar da home para uma seção, muda o fundo
+                if (nextIndex !== 0) {
+                    // Troca o background
+                    document.body.style.transition = 'background 1s ease';
+                    document.body.style.backgroundImage = nextIndex === 1 ? 'url("background.jpg")' : 'url("background.jpg")';
+                } else {
+                    // Retorna o fundo para o original
+                    document.body.style.transition = 'background 1s ease';
+                    document.body.style.backgroundImage = 'url("background.jpg")';
+                }
+
                 // Exibe a próxima seção
                 const nextSection = allSections[nextIndex];
                 setTimeout(() => {
@@ -135,12 +178,12 @@
                         nextSection.style.opacity = '1';
                     }, 50);
                 }, 500);
-    
+
                 // Atualiza o índice da seção atual
                 currentSectionIndex = nextIndex;
             }
         }
-    
+
         // Detecta o scroll do mouse e navega pelas seções
         let isScrolling = false;
         document.addEventListener('wheel', (event) => {
@@ -156,7 +199,7 @@
                 setTimeout(() => isScrolling = false, 1000); // Espera 1 segundo para a próxima navegação
             }
         });
-    
+
         // Ações de clique no menu dropdown
         document.querySelectorAll('.dropdown a').forEach(link => {
             link.addEventListener('click', (e) => {
@@ -164,39 +207,40 @@
                 const targetId = e.target.getAttribute('href').substring(1);
                 const targetSection = document.getElementById(targetId);
                 const targetIndex = Array.from(allSections).indexOf(targetSection);
-    
+
                 changeSection(targetIndex);
             });
         });
-    
+
         // Para voltar à home ao clicar no link "Home Page"
         document.querySelector('.menu a[href="#home"]').addEventListener('click', () => {
             changeSection(0); // Volta para a home
         });
-    
+
         // Função para mover a imagem de fundo com o mouse
         document.addEventListener('mousemove', (event) => {
             const x = (event.clientX / window.innerWidth) * 100;
             const y = (event.clientY / window.innerHeight) * 100;
             document.body.style.backgroundPosition = `${x}% ${y}%`;
         });
-    
+
         // Seleciona todos os elementos de texto que você deseja afetar
         const textElements = document.querySelectorAll('h1, h2, h3, p'); // Adicione outros seletores conforme necessário
-    
+
         textElements.forEach(element => {
             // Adiciona o evento mouseover
             element.addEventListener('mouseover', () => {
                 element.classList.add('enlarge'); // Adiciona a classe de aumento
             });
-    
+
             // Adiciona o evento mouseout
             element.addEventListener('mouseout', () => {
                 element.classList.remove('enlarge'); // Remove a classe de aumento
             });
         });
     </script>
-    
+
+
 </body>
 
 </html>
