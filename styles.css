@@ -307,11 +307,13 @@ p {
 /* Cards dos Projetos */
 .project-cards {
   padding: 30px 30px;
-  display: flex;
-  justify-content: space-between; /* Coloca o espaçamento uniforme entre os cards */
+  justify-content: center; /* Alinha os cards no centro horizontalmente */
   gap: 20px;
-  flex-wrap: nowrap; /* Impede a quebra de linha */
-  margin-top: 50px; /* Adiciona o espaçamento no topo dos cards */
+  flex-wrap: wrap; /* Permite que os cards quebrem a linha */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  justify-items: center; /* Centraliza os itens dentro de cada coluna */
+  margin-top: 20px;
 }
 
 /* Estilos individuais de cada card */
@@ -325,6 +327,7 @@ p {
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
   flex-grow: 1;
 }
+
 
 .project-card:hover {
   transform: scale(1.05);
@@ -345,6 +348,10 @@ p {
   font-size: 1em;
   margin: 0;
   color: #666;
+}
+.project-header i {
+  color: #3498db;
+  margin-right: 10px;
 }
 
 .project-card p {
@@ -368,4 +375,143 @@ p {
   .project-card {
     width: 45%;
   }
+}
+
+/* Estilos para os ícones no canto inferior esquerdo */
+.text-info .icons {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  display: flex;
+  gap: 10px; /* Espaçamento entre os ícones */
+}
+
+.text-info .icons i {
+  font-size: 30px; /* Tamanho dos ícones */
+  color: #FF5722; /* Cor dos ícones */
+  transition: transform 0.3s ease;
+}
+
+.text-info .icons i:hover {
+  transform: scale(1.2); /* Aumenta o ícone ao passar o mouse */
+}
+
+/* Layout da seção 'Sobre Mim' */
+.profile-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.profile-info .text-info {
+  flex: 1;
+  padding: 20px;
+  font-size: 1.1em;
+}
+
+.skills h3 { /*Mudar texto Habilidades e Tecnologias*/
+  font-size: 1.8em;
+  color: #FF5722;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.skills ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.skills ul li {
+  background-color: #333;
+  border-radius: 10px;
+  padding: 10px 20px;
+  margin: 10px;
+  display: flex;
+  align-items: center;
+  font-size: 1.2em;
+  color: #fff;
+  transition: background-color 0.3s ease;
+}
+
+/* Efeito hover para mudar o fundo do item */
+.skills ul li:hover {
+  background-color: #FF5722;
+}
+
+/* Cor padrão dos ícones */
+.skills ul li i {
+  margin-right: 10px;
+  font-size: 1.5em;
+  color: #FF5722;
+  transition: color 0.3s ease; /* Adiciona transição suave */
+}
+
+/* Cor dos ícones quando o item da lista for hover */
+.skills ul li:hover i {
+  color: #fff; /* Muda a cor dos ícones para branco no hover */
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .profile-info {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .profile-info .profile-image {
+    margin-left: 0;
+    margin-bottom: 20px;
+  }
+}
+
+/* Estilo para as informações de contato */
+.text-info {
+  font-size: 1.1em;
+  line-height: 1.8;
+}
+
+.text-info p {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.text-info i {
+  color: #FF5722;
+  font-size: 1.5em;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.text-info i:hover {
+  color: #fff;
+}
+
+.text-info span {
+  display: inline-block;
+  color: #ffffff;
+  font-weight: bold;
+  margin-left: 10px;
+  transition: opacity 0.3s ease;
+  opacity: 1; /* Inicialmente oculto */
+}
+
+/* Estilo para mostrar as informações */
+.text-info span.show {
+  opacity: 1;
+}
+
+/* Estilo para links e redirecionamentos */
+.text-info a {
+  color: #FF5722;
+  text-decoration: none;
+}
+
+.text-info a:hover {
+  text-decoration: underline;
 }
