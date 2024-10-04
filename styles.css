@@ -306,7 +306,7 @@ p {
   opacity: 1;
 }
 
-/* Cards dos Projetos */
+/* Estilo base para os cards */
 .project-cards {
   padding: 30px 30px;
   justify-content: center; /* Alinha os cards no centro horizontalmente */
@@ -323,13 +323,30 @@ p {
   background-color: rgba(255, 255, 255, 0.8); /* Fundo transparente */
   border: 1px solid #FF5722;
   border-radius: 10px;
-  width: 300px;
+  width: 300px; /* Mantém largura padrão */
   padding: 20px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
   flex-grow: 1;
+
+  /* Novas propriedades para scroll */
+  max-height: 400px; /* Altura máxima do card */
+  overflow-y: auto; /* Permite rolagem vertical */
 }
 
+/* Estilize a barra de rolagem se desejar */
+.project-card::-webkit-scrollbar {
+  width: 8px; /* Largura da barra de rolagem */
+}
+
+.project-card::-webkit-scrollbar-thumb {
+  background-color: #FF5722; /* Cor da barra de rolagem */
+  border-radius: 10px; /* Bordas arredondadas da barra de rolagem */
+}
+
+.project-card::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.3); /* Cor do fundo da barra de rolagem */
+}
 
 .project-card:hover {
   transform: scale(1.05);
@@ -491,80 +508,90 @@ p {
 @media (max-width: 768px) {
   /* Ajustar menu dropdown */
   .menu {
-      flex-direction: column;
-      align-items: flex-start;
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   .dropdown {
-      width: 100%;
+    width: 100%;
   }
 
   .dropdown a {
-      display: block;
-      padding: 10px 15px;
-      border-bottom: 1px solid #ccc;
+    display: block;
+    padding: 10px 15px;
+    border-bottom: 1px solid #ccc;
   }
 
   /* Ajustar layout da seção de "Home" */
   .home {
-      flex-direction: column;
-      padding: 20px;
-      text-align: center;
+    flex-direction: column;
+    padding: 20px;
+    text-align: center;
   }
 
   .profile-image {
-      border: 5px solid #ff5722;
-      width: 100px; /* Ajusta a largura da imagem */
-      height: auto; /* Mantém a proporção da imagem */
-      margin: 0 auto; /* Centraliza a imagem */
+    border: 5px solid #ff5722;
+    width: 100px; /* Ajusta a largura da imagem */
+    height: auto; /* Mantém a proporção da imagem */
+    margin: 0 auto; /* Centraliza a imagem */
   }
 
   .text-info h2 {
-      font-size: 24px; /* Ajustar tamanho da fonte */
+    font-size: 24px; /* Ajustar tamanho da fonte */
   }
 
   .text-info p {
-      font-size: 16px;
+    font-size: 16px;
   }
 
   /* Ajustar layout da seção "Sobre Mim" */
   .sobre-mim {
-      flex-direction: column;
-      padding: 20px;
+    flex-direction: column;
+    padding: 20px;
   }
 
   .sobre-mim .profile-info {
-      flex-direction: column;
-      align-items: center;
+    flex-direction: column;
+    align-items: center;
   }
 
   .profile-info .profile-image {
-      width: 150px; /* Reduzir tamanho da imagem */
+    width: 150px; /* Reduzir tamanho da imagem */
   }
 
   .skills ul {
-      padding: 0;
-      list-style-type: none;
+    padding: 0;
+    list-style-type: none;
   }
 
   .skills ul li {
-      margin-bottom: 10px;
-      font-size: 16px;
+    margin-bottom: 10px;
+    font-size: 16px;
   }
 
   /* Ajustar layout da seção "Projetos" */
   .project-cards {
-      display: flex;
-      flex-direction: column;
+    padding: 15px 10px; /* Reduz o padding em telas menores */
+    display: grid; /* Alterado para grid */
+    grid-template-columns: 1fr; /* Exibe os cards em uma única coluna */
+    gap: 15px; /* Reduz o espaçamento entre os cards */
   }
 
   .project-card {
-      margin-bottom: 20px;
+    width: 100%; /* Faz o card ocupar toda a largura disponível */
+    padding: 5px; /* Reduz o padding dos cards */
+  }
+
+  .project-card h3 {
+    font-size: 15px; /* Reduz tamanho do título */
+  }
+
+  .project-card p {
+    font-size: 10px; /* Reduz tamanho do texto */
   }
 
   /* Ajustar seção de contato */
   .contato .text-info {
-      text-align: center;
+    text-align: center;
   }
 }
-
