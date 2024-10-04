@@ -568,6 +568,10 @@ p {
 
 @media (max-width: 768px) {
 
+  body {
+    overflow-y: auto; /* Permitir scroll vertical */
+  }
+
   /* Ajustar menu dropdown */
   .menu {
     flex-direction: column;
