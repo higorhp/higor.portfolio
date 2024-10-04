@@ -569,7 +569,8 @@ p {
 @media (max-width: 768px) {
 
   body {
-    overflow-y: auto; /* Permitir scroll vertical */
+    overflow-y: scroll; /* Permitir scroll vertical */
+    transition: none; /* Remove transições do body */
   }
 
   /* Ajustar menu dropdown */
@@ -591,38 +592,32 @@ p {
   /* Ajustar layout da seção de "Home" */
   .home {
     flex-direction: column;
-    padding: 15px;
-    /* Reduzir padding */
+    padding: 15px; /* Reduzir padding */
     text-align: center;
+    transition: none; /* Remove transição da seção Home */
   }
 
   .profile-image {
     border: 5px solid #ff5722;
-    width: 80px;
-    /* Ajusta a largura da imagem para um tamanho menor */
-    height: auto;
-    /* Mantém a proporção da imagem */
-    margin: 0 auto;
-    /* Centraliza a imagem */
+    width: 80px; /* Ajusta a largura da imagem para um tamanho menor */
+    height: auto; /* Mantém a proporção da imagem */
+    margin: 0 auto; /* Centraliza a imagem */
   }
 
   .text-info h2 {
-    font-size: 20px;
-    /* Ajustar tamanho da fonte para h2 */
+    font-size: 20px; /* Ajustar tamanho da fonte para h2 */
   }
 
   .text-info p {
-    font-size: 14px;
-    /* Reduzir tamanho do parágrafo */
+    font-size: 14px; /* Reduzir tamanho do parágrafo */
   }
 
   /* Ajustar layout da seção "Sobre Mim" */
   .sobre-mim {
     flex-direction: column;
-    padding: 15px;
-    /* Reduzir padding */
-    margin-bottom: 20px;
-    /* Espaçamento entre seções */
+    padding: 15px; /* Reduzir padding */
+    margin-bottom: 20px; /* Espaçamento entre seções */
+    transition: none; /* Remove transição da seção Sobre Mim */
   }
 
   .sobre-mim .profile-info {
@@ -631,8 +626,7 @@ p {
   }
 
   .profile-info .profile-image {
-    width: 120px;
-    /* Ajusta o tamanho da imagem no perfil */
+    width: 120px; /* Ajusta o tamanho da imagem no perfil */
   }
 
   .skills ul {
@@ -641,42 +635,35 @@ p {
   }
 
   .skills ul li {
-    margin-bottom: 8px;
-    /* Reduzir margem entre itens da lista */
-    font-size: 14px;
-    /* Reduzir tamanho do texto dos itens */
+    margin-bottom: 8px; /* Reduzir margem entre itens da lista */
+    font-size: 14px; /* Reduzir tamanho do texto dos itens */
   }
 
   /* Ajustar layout da seção "Projetos" */
   .project-cards {
-    padding: 10px;
-    /* Reduz o padding em telas menores */
+    padding: 10px; /* Reduz o padding em telas menores */
     display: grid;
-    grid-template-columns: 1fr;
-    /* Exibe os cards em uma única coluna */
-    gap: 10px;
-    /* Reduz o espaçamento entre os cards */
+    grid-template-columns: 1fr; /* Exibe os cards em uma única coluna */
+    gap: 10px; /* Reduz o espaçamento entre os cards */
+    transition: none; /* Remove transição da seção de projetos */
   }
 
   .project-card {
-    width: 100%;
-    /* Faz o card ocupar toda a largura disponível */
-    padding: 10px;
-    /* Ajusta o padding dos cards */
+    width: 100%; /* Faz o card ocupar toda a largura disponível */
+    padding: 10px; /* Ajusta o padding dos cards */
   }
 
   .project-card h3 {
-    font-size: 14px;
-    /* Reduzir tamanho do título */
+    font-size: 14px; /* Reduzir tamanho do título */
   }
 
   .project-card p {
-    font-size: 12px;
-    /* Ajusta o tamanho do texto */
+    font-size: 12px; /* Ajusta o tamanho do texto */
   }
 
   /* Ajustar seção de contato */
   .contato .text-info {
     text-align: center;
+    transition: none; /* Remove transição da seção de contato */
   }
 }
