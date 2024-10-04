@@ -515,3 +515,87 @@ p {
 .text-info a:hover {
   text-decoration: underline;
 }
+
+/* Ajustes de responsividade para dispositivos móveis */
+@media (max-width: 768px) {
+  /* Estilos específicos para celulares */
+  body {
+    overflow-y: auto; /* Permite rolagem vertical em celulares */
+    overflow-x: hidden; /* Esconde a barra de rolagem horizontal, caso apareça */
+  }
+
+  /* Ajustar tamanhos de fontes e margens */
+  h2 {
+    font-size: 1.8em; /* Tamanho menor para títulos em celulares */
+  }
+
+  .main-content h2 {
+    font-size: 2em; /* Tamanho menor para títulos principais */
+  }
+
+  /* Ajustar o padding */
+  .sobre-mim, .projetos, .contato {
+    padding: 15px;
+    margin: 0 10px; /* Adiciona margens laterais em dispositivos móveis */
+  }
+
+  /* Ajustar as imagens de perfil */
+  .profile-image {
+    width: 60vw; /* Tamanho relativo */
+    height: auto; /* Mantém a proporção */
+    max-width: 150px; /* Limitar o tamanho máximo */
+    max-height: 150px; /* Limitar o tamanho máximo */
+  }
+
+  /* Ajustar a seção de habilidades */
+  .skills ul {
+    flex-direction: column; /* Exibir em coluna em telas pequenas */
+  }
+
+  .skills ul li {
+    margin: 5px 0; /* Ajustar margem entre itens */
+  }
+
+  /* Ajustar ícones na seção de informações */
+  .text-info .icons {
+    flex-direction: row; /* Mudar para linha em telas menores */
+    justify-content: center; /* Centralizar ícones */
+    position: static; /* Mudar para estático */
+    bottom: auto; /* Remover posição fixa */
+    left: auto; /* Remover posição fixa */
+  }
+
+  /* Menu dropdown */
+  .dropdown {
+    position: relative; /* Ajusta para o menu */
+    top: 0; /* Remove a distância superior */
+  }
+
+  /* Cards de projetos */
+  .project-card {
+    width: 90%; /* Card ocupa quase toda a largura */
+    margin: 10px 0; /* Margens verticais */
+  }
+
+  /* Ocultar menu em dispositivos móveis */
+  .menu {
+    position: static; /* Define o menu como estático */
+    margin: 10px; /* Espaço em torno do menu */
+  }
+
+  .menu-icon {
+    font-size: 1.5em; /* Reduz o tamanho do ícone do menu */
+  }
+}
+
+/* Ocultar barras de rolagem em telas menores que 768px */
+@media (max-width: 768px) {
+  body {
+    overflow-y: hidden; /* Oculta a barra de rolagem vertical */
+  }
+}
+
+/* Evitar que o overflow se torne um problema em desktop */
+body {
+  overflow-x: hidden; /* Oculta a barra de rolagem horizontal, se necessário */
+}
