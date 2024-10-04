@@ -2,13 +2,17 @@
 body {
   margin: 0;
   font-family: 'Roboto', sans-serif;
-  background-image: url('background.jpg'); /* A imagem do fundo que se move */
+  background-image: url('background.jpg');
+  /* A imagem do fundo que se move */
   background-size: cover;
   background-position: center;
-  background-attachment: fixed; /* Mantém o fundo fixo enquanto o conteúdo rola */
+  background-attachment: fixed;
+  /* Mantém o fundo fixo enquanto o conteúdo rola */
   height: 100%;
-  overflow-y: hidden; /* Esconde a barra de rolagem vertical */
-  overflow-x: hidden; /* Esconde a barra de rolagem horizontal, caso apareça */
+  overflow-y: hidden;
+  /* Esconde a barra de rolagem vertical */
+  overflow-x: hidden;
+  /* Esconde a barra de rolagem horizontal, caso apareça */
   color: #fff;
   transition: background-position 0.3s ease;
   scrollbar-width: none;
@@ -20,7 +24,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh; /* Altura ocupando toda a tela */
+  height: 100vh;
+  /* Altura ocupando toda a tela */
   transition: opacity 1s ease, background-image 1s ease;
   opacity: 1;
 
@@ -30,27 +35,35 @@ body {
 .home-out {
   opacity: 0;
   background-image: url('background.jpg');
-  height: 100vh; /* Mantenha altura completa para garantir que a transição não empurre o conteúdo */
+  height: 100vh;
+  /* Mantenha altura completa para garantir que a transição não empurre o conteúdo */
 }
 
 /* Continuar com os outros estilos das seções */
-.sobre-mim, .projetos, .contato {
+.sobre-mim,
+.projetos,
+.contato {
   padding: 20px;
   text-align: center;
   opacity: 0;
   transition: opacity 1s ease, transform 0.5s ease;
   display: none;
   transform: translateY(20px);
-  border: 1px solid rgba(255, 255, 255, 0.1); /* Borda */
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Sombra */
-  border-radius: 8px; /* Bordas arredondadas */
-  backdrop-filter: blur(10px); /* Efeito de desfoque no fundo */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  /* Borda */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  /* Sombra */
+  border-radius: 8px;
+  /* Bordas arredondadas */
+  backdrop-filter: blur(10px);
+  /* Efeito de desfoque no fundo */
 }
 
 
 /* Adiciona transição de background para a seção 'Sobre Mim' */
 .sobre-mim {
-  transition: background-image 1s ease; /* Transição de imagem de fundo */
+  transition: background-image 1s ease;
+  /* Transição de imagem de fundo */
 }
 
 /* Quando a seção 'Sobre Mim' estiver visível */
@@ -110,7 +123,8 @@ body {
   width: 100%;
   position: relative;
   border-radius: 20px;
-  z-index: 2; /* Certifique-se de que o título esteja acima de outros elementos */
+  z-index: 2;
+  /* Certifique-se de que o título esteja acima de outros elementos */
 }
 
 .section-title h2 {
@@ -126,24 +140,30 @@ body {
   right: 35px;
   cursor: pointer;
   z-index: 10;
-  transition: transform 0.3s ease; /* Adiciona uma transição suave */
+  transition: transform 0.3s ease;
+  /* Adiciona uma transição suave */
 }
 
 /* Ícone do Menu */
 .menu-icon {
   font-size: 2em;
   color: #fff;
-  transition: transform 0.3s ease, color 0.3s ease; /* Transição para transformação e cor */
+  transition: transform 0.3s ease, color 0.3s ease;
+  /* Transição para transformação e cor */
 }
 
 .menu-icon:hover {
-  transform: scale(1.1); /* Aumenta o ícone ao passar o mouse */
-  color: #6422ff; /* Altera a cor ao passar o mouse */
+  transform: scale(1.1);
+  /* Aumenta o ícone ao passar o mouse */
+  color: #6422ff;
+  /* Altera a cor ao passar o mouse */
 }
 
 .menu-icon:active {
-  transform: scale(0.95); /* Reduz o ícone ao ser clicado */
-  transition: transform 0.1s ease; /* Transição rápida para o efeito de clique */
+  transform: scale(0.95);
+  /* Reduz o ícone ao ser clicado */
+  transition: transform 0.1s ease;
+  /* Transição rápida para o efeito de clique */
 }
 
 /* Dropdown do menu */
@@ -154,16 +174,22 @@ body {
   background-color: #333;
   border-radius: 10px;
   flex-direction: column;
-  opacity: 0; /* Inicialmente invisível */
-  transform: translateY(-10px); /* Leve deslocamento para a animação */
+  opacity: 0;
+  /* Inicialmente invisível */
+  transform: translateY(-10px);
+  /* Leve deslocamento para a animação */
   transition: opacity 0.3s ease, transform 0.3s ease;
-  pointer-events: none; /* Impede que o dropdown seja clicável quando invisível */
+  pointer-events: none;
+  /* Impede que o dropdown seja clicável quando invisível */
 }
 
 .dropdown.show {
-  opacity: 1; /* Torna visível */
-  transform: translateY(0); /* Remove o deslocamento para a animação */
-  pointer-events: auto; /* Permite cliques quando visível */
+  opacity: 1;
+  /* Torna visível */
+  transform: translateY(0);
+  /* Remove o deslocamento para a animação */
+  pointer-events: auto;
+  /* Permite cliques quando visível */
 }
 
 .dropdown a {
@@ -171,11 +197,13 @@ body {
   padding: 10px 15px;
   color: #fff;
   text-decoration: none;
-  transition: background-color 0.3s ease; /* Transição suave na cor de fundo */
+  transition: background-color 0.3s ease;
+  /* Transição suave na cor de fundo */
 }
 
 .dropdown a:hover {
-  background-color: #444; /* Cor de fundo ao passar o mouse */
+  background-color: #444;
+  /* Cor de fundo ao passar o mouse */
   border-radius: 10px;
 }
 
@@ -183,7 +211,8 @@ body {
 .menu:hover .dropdown {
   opacity: 1;
   transform: translateY(0);
-  pointer-events: auto; /* Torna o dropdown clicável */
+  pointer-events: auto;
+  /* Torna o dropdown clicável */
 }
 
 /* Adicionando um pouco de espaçamento ao menu */
@@ -247,18 +276,21 @@ body {
 }
 
 /* Outros ajustes */
-.text-info, .project {
+.text-info,
+.project {
   text-align: left;
 }
 
 .descricao {
   font-size: 1.3em;
-  color: #FF5722; /* Aqui você pode substituir pelo código da cor que deseja */
+  color: #FF5722;
+  /* Aqui você pode substituir pelo código da cor que deseja */
 }
 
 .Idade {
   font-size: 1.3em;
-  color: #FF5722; /* Aqui você pode substituir pelo código da cor que deseja */
+  color: #FF5722;
+  /* Aqui você pode substituir pelo código da cor que deseja */
 }
 
 .beat-effect {
@@ -266,9 +298,17 @@ body {
 }
 
 @keyframes beat {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.2); }
-  100% { transform: scale(1); }
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.2);
+  }
+
+  100% {
+    transform: scale(1);
+  }
 }
 
 .section-title h2 {
@@ -292,7 +332,8 @@ p {
 /* Seção de Projetos */
 .projetos {
   padding: 25px 20px;
-  background-color: rgba(244, 244, 244, 0); /* Cor de fundo semi-transparente */
+  background-color: rgba(244, 244, 244, 0);
+  /* Cor de fundo semi-transparente */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -309,43 +350,54 @@ p {
 /* Estilo base para os cards */
 .project-cards {
   padding: 30px 30px;
-  justify-content: center; /* Alinha os cards no centro horizontalmente */
+  justify-content: center;
+  /* Alinha os cards no centro horizontalmente */
   gap: 20px;
-  flex-wrap: wrap; /* Permite que os cards quebrem a linha */
+  flex-wrap: wrap;
+  /* Permite que os cards quebrem a linha */
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  justify-items: center; /* Centraliza os itens dentro de cada coluna */
+  justify-items: center;
+  /* Centraliza os itens dentro de cada coluna */
   margin-top: 20px;
 }
 
 /* Estilos individuais de cada card */
 .project-card {
-  background-color: rgba(255, 255, 255, 0.8); /* Fundo transparente */
+  background-color: rgba(255, 255, 255, 0.8);
+  /* Fundo transparente */
   border: 1px solid #FF5722;
   border-radius: 10px;
-  width: 300px; /* Mantém largura padrão */
+  width: 300px;
+  /* Mantém largura padrão */
   padding: 20px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
   flex-grow: 1;
 
   /* Novas propriedades para scroll */
-  max-height: 400px; /* Altura máxima do card */
-  overflow-y: auto; /* Permite rolagem vertical */
+  max-height: 400px;
+  /* Altura máxima do card */
+  overflow-y: auto;
+  /* Permite rolagem vertical */
 }
 
 /* Estilize a barra de rolagem se desejar */
 .project-card::-webkit-scrollbar {
-  width: 8px; /* Largura da barra de rolagem */
+  width: 8px;
+  /* Largura da barra de rolagem */
 }
 
 .project-card::-webkit-scrollbar-thumb {
-  background-color: #FF5722; /* Cor da barra de rolagem */
-  border-radius: 10px; /* Bordas arredondadas da barra de rolagem */
+  background-color: #FF5722;
+  /* Cor da barra de rolagem */
+  border-radius: 10px;
+  /* Bordas arredondadas da barra de rolagem */
 }
 
 .project-card::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.3); /* Cor do fundo da barra de rolagem */
+  background: rgba(255, 255, 255, 0.3);
+  /* Cor do fundo da barra de rolagem */
 }
 
 .project-card:hover {
@@ -368,6 +420,7 @@ p {
   margin: 0;
   color: #666;
 }
+
 .project-header i {
   color: #3498db;
   margin-right: 10px;
@@ -385,17 +438,21 @@ p {
   bottom: 20px;
   left: 20px;
   display: flex;
-  gap: 10px; /* Espaçamento entre os ícones */
+  gap: 10px;
+  /* Espaçamento entre os ícones */
 }
 
 .text-info .icons i {
-  font-size: 30px; /* Tamanho dos ícones */
-  color: #FF5722; /* Cor dos ícones */
+  font-size: 30px;
+  /* Tamanho dos ícones */
+  color: #FF5722;
+  /* Cor dos ícones */
   transition: transform 0.3s ease;
 }
 
 .text-info .icons i:hover {
-  transform: scale(1.2); /* Aumenta o ícone ao passar o mouse */
+  transform: scale(1.2);
+  /* Aumenta o ícone ao passar o mouse */
 }
 
 /* Layout da seção 'Sobre Mim' */
@@ -412,7 +469,8 @@ p {
   font-size: 1.1em;
 }
 
-.skills h3 { /*Mudar texto Habilidades e Tecnologias*/
+.skills h3 {
+  /*Mudar texto Habilidades e Tecnologias*/
   font-size: 1.8em;
   color: #FF5722;
   margin-bottom: 20px;
@@ -449,12 +507,14 @@ p {
   margin-right: 10px;
   font-size: 1.5em;
   color: #FF5722;
-  transition: color 0.3s ease; /* Adiciona transição suave */
+  transition: color 0.3s ease;
+  /* Adiciona transição suave */
 }
 
 /* Cor dos ícones quando o item da lista for hover */
 .skills ul li:hover i {
-  color: #fff; /* Muda a cor dos ícones para branco no hover */
+  color: #fff;
+  /* Muda a cor dos ícones para branco no hover */
 }
 
 /* Estilo para as informações de contato */
@@ -487,7 +547,8 @@ p {
   font-weight: bold;
   margin-left: 10px;
   transition: opacity 0.3s ease;
-  opacity: 1; /* Inicialmente oculto */
+  opacity: 1;
+  /* Inicialmente oculto */
 }
 
 /* Estilo para mostrar as informações */
@@ -506,6 +567,7 @@ p {
 }
 
 @media (max-width: 768px) {
+
   /* Ajustar menu dropdown */
   .menu {
     flex-direction: column;
@@ -525,29 +587,38 @@ p {
   /* Ajustar layout da seção de "Home" */
   .home {
     flex-direction: column;
-    padding: 20px;
+    padding: 15px;
+    /* Reduzir padding */
     text-align: center;
   }
 
   .profile-image {
     border: 5px solid #ff5722;
-    width: 100px; /* Ajusta a largura da imagem */
-    height: auto; /* Mantém a proporção da imagem */
-    margin: 0 auto; /* Centraliza a imagem */
+    width: 80px;
+    /* Ajusta a largura da imagem para um tamanho menor */
+    height: auto;
+    /* Mantém a proporção da imagem */
+    margin: 0 auto;
+    /* Centraliza a imagem */
   }
 
   .text-info h2 {
-    font-size: 24px; /* Ajustar tamanho da fonte */
+    font-size: 20px;
+    /* Ajustar tamanho da fonte para h2 */
   }
 
   .text-info p {
-    font-size: 16px;
+    font-size: 14px;
+    /* Reduzir tamanho do parágrafo */
   }
 
   /* Ajustar layout da seção "Sobre Mim" */
   .sobre-mim {
     flex-direction: column;
-    padding: 20px;
+    padding: 15px;
+    /* Reduzir padding */
+    margin-bottom: 20px;
+    /* Espaçamento entre seções */
   }
 
   .sobre-mim .profile-info {
@@ -556,7 +627,8 @@ p {
   }
 
   .profile-info .profile-image {
-    width: 150px; /* Reduzir tamanho da imagem */
+    width: 120px;
+    /* Ajusta o tamanho da imagem no perfil */
   }
 
   .skills ul {
@@ -565,29 +637,38 @@ p {
   }
 
   .skills ul li {
-    margin-bottom: 10px;
-    font-size: 16px;
+    margin-bottom: 8px;
+    /* Reduzir margem entre itens da lista */
+    font-size: 14px;
+    /* Reduzir tamanho do texto dos itens */
   }
 
   /* Ajustar layout da seção "Projetos" */
   .project-cards {
-    padding: 15px 10px; /* Reduz o padding em telas menores */
-    display: grid; /* Alterado para grid */
-    grid-template-columns: 1fr; /* Exibe os cards em uma única coluna */
-    gap: 15px; /* Reduz o espaçamento entre os cards */
+    padding: 10px;
+    /* Reduz o padding em telas menores */
+    display: grid;
+    grid-template-columns: 1fr;
+    /* Exibe os cards em uma única coluna */
+    gap: 10px;
+    /* Reduz o espaçamento entre os cards */
   }
 
   .project-card {
-    width: 100%; /* Faz o card ocupar toda a largura disponível */
-    padding: 5px; /* Reduz o padding dos cards */
+    width: 100%;
+    /* Faz o card ocupar toda a largura disponível */
+    padding: 10px;
+    /* Ajusta o padding dos cards */
   }
 
   .project-card h3 {
-    font-size: 15px; /* Reduz tamanho do título */
+    font-size: 14px;
+    /* Reduzir tamanho do título */
   }
 
   .project-card p {
-    font-size: 10px; /* Reduz tamanho do texto */
+    font-size: 12px;
+    /* Ajusta o tamanho do texto */
   }
 
   /* Ajustar seção de contato */
