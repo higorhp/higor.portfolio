@@ -600,9 +600,6 @@ p {
     box-sizing: border-box; /* Inclui padding e border no cálculo da altura total */
   }
   
-  
-  
-
   .profile-image {
     border: 5px solid #ff5722;
     width: 80px; /* Ajusta a largura da imagem para um tamanho menor */
@@ -623,7 +620,7 @@ p {
     flex-direction: column;
     padding: 15px; /* Reduzir padding */
     margin-bottom: 20px; /* Espaçamento entre seções */
-    height: 100vh; /* Definir altura fixa para permitir scroll */
+    height: 90vh; /* Definir altura fixa para permitir scroll */
     overflow-y: auto; /* Permitir scroll na seção */
   }
 
@@ -646,28 +643,39 @@ p {
     font-size: 14px; /* Reduzir tamanho do texto dos itens */
   }
 
-  /* Ajustar layout da seção "Projetos" */
-  .project-cards {
+/* Ajustar layout da seção "Projetos" */
+.project-cards {
     padding: 10px; /* Reduz o padding em telas menores */
     display: grid;
     grid-template-columns: 1fr; /* Exibe os cards em uma única coluna */
     gap: 10px; /* Reduz o espaçamento entre os cards */
-    height: 100vh; /* Definir altura fixa para permitir scroll */
+    max-height: 80vh; /* Definir altura máxima para permitir scroll */
     overflow-y: auto; /* Permitir scroll na seção */
-  }
+}
 
-  .project-card {
+.project-card {
     width: 100%; /* Faz o card ocupar toda a largura disponível */
     padding: 10px; /* Ajusta o padding dos cards */
-  }
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra para destaque */
+}
 
-  .project-card h3 {
-    font-size: 14px; /* Reduzir tamanho do título */
-  }
 
-  .project-card p {
-    font-size: 12px; /* Ajusta o tamanho do texto */
-  }
+/* Estilos individuais de cada card */
+.project-card {
+  width: 100%; /* Faz o card ocupar toda a largura disponível */
+  padding: 10px; /* Ajusta o padding dos cards */
+  background-color: rgba(255, 255, 255, 0.9); /* Adiciona um fundo branco semi-transparente */
+  border-radius: 5px; /* Bordas arredondadas para os cards */
+}
+
+.project-card h3 {
+  font-size: 14px; /* Reduzir tamanho do título */
+}
+
+.project-card p {
+  font-size: 12px; /* Ajusta o tamanho do texto */
+}
+
 
   /* Ajustar seção de contato */
   .contato .text-info {
