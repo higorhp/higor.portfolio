@@ -20,7 +20,7 @@ body {
 
 /* Estilo para a seção inicial (home) */
 .home {
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(46, 45, 45, 0.5)), url('background.jpg');
+  /*background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(46, 45, 45, 0.5)), url('background.jpg');*/
   display: flex;
   justify-content: center;
   align-items: center;
@@ -589,12 +589,12 @@ p {
     border-bottom: 1px solid #ccc;
   }
 
-  /* Ajustar layout da seção de "Home" */
   .home {
     flex-direction: column;
     padding: 15px; /* Reduzir padding */
     text-align: center;
-    transition: none; /* Remove transição da seção Home */
+    height: 100vh; /* Definir altura fixa para permitir scroll */
+    overflow-y: auto; /* Permitir scroll na seção */
   }
 
   .profile-image {
@@ -617,7 +617,8 @@ p {
     flex-direction: column;
     padding: 15px; /* Reduzir padding */
     margin-bottom: 20px; /* Espaçamento entre seções */
-    transition: none; /* Remove transição da seção Sobre Mim */
+    height: 100vh; /* Definir altura fixa para permitir scroll */
+    overflow-y: auto; /* Permitir scroll na seção */
   }
 
   .sobre-mim .profile-info {
@@ -645,7 +646,8 @@ p {
     display: grid;
     grid-template-columns: 1fr; /* Exibe os cards em uma única coluna */
     gap: 10px; /* Reduz o espaçamento entre os cards */
-    transition: none; /* Remove transição da seção de projetos */
+    height: 100vh; /* Definir altura fixa para permitir scroll */
+    overflow-y: auto; /* Permitir scroll na seção */
   }
 
   .project-card {
@@ -664,6 +666,7 @@ p {
   /* Ajustar seção de contato */
   .contato .text-info {
     text-align: center;
-    transition: none; /* Remove transição da seção de contato */
+    height: 100vh; /* Definir altura fixa para permitir scroll */
+    overflow-y: auto; /* Permitir scroll na seção */
   }
 }
