@@ -569,7 +569,7 @@ p {
 @media (max-width: 768px) {
 
   body {
-    overflow-y: scroll; /* Permitir scroll vertical */
+    overflow-y: hidden; /* Permitir scroll vertical */
     transition: none; /* Remove transições do body */
   }
 
@@ -590,12 +590,18 @@ p {
   }
 
   .home {
-    flex-direction: column;
-    padding: 15px; /* Reduzir padding */
-    text-align: center;
-    height: 100vh; /* Definir altura fixa para permitir scroll */
-    overflow-y: auto; /* Permitir scroll na seção */
+    position: absolute; /* Posiciona em relação ao viewport */
+    top: 0; /* Começa no topo */
+    left: 0; /* Começa à esquerda */
+    right: 0; /* Ocupa toda a largura */
+    bottom: 0; /* Ocupa toda a altura */
+    overflow: hidden; /* Impede a rolagem */
+    padding: 10px; /* Ajuste conforme necessário */
+    box-sizing: border-box; /* Inclui padding e border no cálculo da altura total */
   }
+  
+  
+  
 
   .profile-image {
     border: 5px solid #ff5722;
