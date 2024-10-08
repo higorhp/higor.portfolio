@@ -581,6 +581,16 @@ p {
     transition: none; /* Remove transições do body */
   }
 
+  .text-info .icons {
+    bottom: 65px; /* Aumenta o espaço para garantir que fique visível */
+    left: 10px;
+    gap: 8px; /* Ajusta o espaçamento entre os ícones */
+  }
+
+  .text-info .icons i {
+    font-size: 24px; /* Diminui o tamanho dos ícones para caber melhor */
+  }
+  
   /* Ajustar menu dropdown */
   .menu {
     flex-direction: column;
@@ -604,7 +614,7 @@ p {
     right: 0; /* Ocupa toda a largura */
     bottom: 0; /* Ocupa toda a altura */
     overflow: hidden; /* Impede a rolagem */
-    padding: 0px; /* Ajuste conforme necessário */
+    padding: 5px; /* Ajuste conforme necessário */
   }
   
   .profile-image {
