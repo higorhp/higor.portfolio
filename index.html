@@ -160,16 +160,23 @@
 
 
     <script>
+        // Função para verificar se o dispositivo é mobile
+        function isMobile() {
+            return window.innerWidth <= 768; // Considera dispositivos com largura menor ou igual a 768px
+        }
+    
         // Exibe/oculta o menu dropdown ao clicar
         document.querySelector('.menu-icon').addEventListener('click', () => {
             const dropdownMenu = document.querySelector('.dropdown');
             dropdownMenu.classList.toggle('show');
         });
-    
-        // Fecha o menu dropdown quando o mouse sai de cima
+        
+        // Fecha o menu dropdown quando o mouse sai de cima (apenas em dispositivos móveis)
         document.querySelector('.dropdown').addEventListener('mouseleave', () => {
-            const dropdownMenu = document.querySelector('.dropdown');
-            dropdownMenu.classList.remove('show'); // Remove a classe show para ocultar
+            if (isMobile()) {
+                const dropdownMenu = document.querySelector('.dropdown');
+                dropdownMenu.classList.remove('show'); // Remove a classe show para ocultar
+            }
         });
     
         // Função para alterar a seção visível com animação suave
@@ -206,6 +213,12 @@
                 }, 500);
     
                 currentSectionIndex = nextIndex;
+    
+                // Fecha o menu dropdown em dispositivos móveis após mudar de seção
+                if (isMobile()) {
+                    const dropdownMenu = document.querySelector('.dropdown');
+                    dropdownMenu.classList.remove('show');
+                }
             }
         }
     
@@ -263,18 +276,31 @@
         // Ações de clique no menu dropdown
         document.querySelectorAll('.dropdown a').forEach(link => {
             link.addEventListener('click', (e) => {
-                e.preventDefault();
+                e.preventDefault(); // Previne o comportamento padrão do link
+    
                 const targetId = e.target.getAttribute('href').substring(1);
                 const targetSection = document.getElementById(targetId);
                 const targetIndex = Array.from(allSections).indexOf(targetSection);
     
                 changeSection(targetIndex);
+    
+                // Fecha o menu dropdown após clicar em um item (apenas em dispositivos móveis)
+                if (isMobile()) {
+                    const dropdownMenu = document.querySelector('.dropdown');
+                    dropdownMenu.classList.remove('show');
+                }
             });
         });
     
         // Volta à home ao clicar no link "Home Page"
         document.querySelector('.menu a[href="#home"]').addEventListener('click', () => {
             changeSection(0); // Volta para a home
+    
+            // Fecha o menu dropdown ao voltar para a home
+            if (isMobile()) {
+                const dropdownMenu = document.querySelector('.dropdown');
+                dropdownMenu.classList.remove('show');
+            }
         });
     
         // Função para mover a imagem de fundo com o mouse

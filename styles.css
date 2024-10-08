@@ -133,11 +133,11 @@ body {
   font-size: 1.8em;
 }
 
-/* Adicione uma classe para esconder o menu */
 .hide-menu {
   opacity: 0;
+  visibility: hidden;
   pointer-events: none;  /* Impede a interação quando o menu estiver escondido */
-  transition: opacity 0.5s ease-in-out;
+  transition: opacity 0.5s ease-in-out, visibility 0s 0.5s; /* Transição suave de opacidade e visibilidade */
 }
 
 /* Menu oculto */
@@ -604,8 +604,7 @@ p {
     right: 0; /* Ocupa toda a largura */
     bottom: 0; /* Ocupa toda a altura */
     overflow: hidden; /* Impede a rolagem */
-    padding: 10px; /* Ajuste conforme necessário */
-    box-sizing: border-box; /* Inclui padding e border no cálculo da altura total */
+    padding: 0px; /* Ajuste conforme necessário */
   }
   
   .profile-image {
