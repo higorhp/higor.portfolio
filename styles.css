@@ -133,15 +133,23 @@ body {
   font-size: 1.8em;
 }
 
+/* Adicione uma classe para esconder o menu */
+.hide-menu {
+  opacity: 0;
+  pointer-events: none;  /* Impede a interação quando o menu estiver escondido */
+  transition: opacity 0.5s ease-in-out;
+}
+
 /* Menu oculto */
 .menu {
   position: fixed;
   top: 35px;
   right: 35px;
+  z-index: 99999;
   cursor: pointer;
-  z-index: 10;
-  transition: transform 0.3s ease;
-  /* Adiciona uma transição suave */
+  opacity: 1; /* Inicia visível */
+  transform: translateY(0);
+  transition: opacity 0.5s ease, transform 0.5s ease; /* Suave transição */
 }
 
 /* Ícone do Menu */
@@ -580,7 +588,7 @@ p {
   }
 
   .dropdown {
-    width: 100%;
+    width: 200%;
   }
 
   .dropdown a {
