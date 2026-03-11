@@ -9,33 +9,27 @@
   --shadow: 0 10px 30px rgba(0, 0, 0, .35)
 }
 
-/* Canvas para partículas */
 #particles-canvas {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: -1; /* Fica atrás de tudo */
-  pointer-events: none; /* Não interfere no clique */
+  z-index: -1;
+  pointer-events: none;
 }
 
-/* Corpo da página */
 body {
   margin: 0;
   font-family: 'Inter', 'Roboto', sans-serif;
-  background-color: #111; /* Cor de fundo caso a imagem falhe */
+  background-color: #111;
   background-image: url('background.jpg');
-  /* A imagem do fundo que se move */
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
-  /* Mantém o fundo fixo enquanto o conteúdo rola */
   height: 100%;
   overflow-y: hidden;
-  /* Esconde a barra de rolagem vertical */
   overflow-x: hidden;
-  /* Esconde a barra de rolagem horizontal, caso apareça */
   color: #fff;
   transition: background-position 0.3s ease;
   scrollbar-width: none;
@@ -57,33 +51,28 @@ body::before {
   content: "";
   position: fixed;
   inset: 0;
-  background: linear-gradient(180deg, rgba(0, 0, 0, .75), rgba(0, 0, 0, .75)); /* Escureci um pouco mais para destacar as partículas */
+  background: linear-gradient(180deg, rgba(0, 0, 0, .75), rgba(0, 0, 0, .75));
   pointer-events: none;
-  z-index: -1; /* Ajustado para ficar logo acima do canvas/imagem mas abaixo do conteúdo */
+  z-index: -1;
 }
 
-/* Estilo para a seção inicial (home) */
 .home {
   /*background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(46, 45, 45, 0.5)), url('background.jpg');*/
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  /* Altura ocupando toda a tela */
   transition: opacity 1s ease, background-image 1s ease;
   opacity: 1;
 
 }
 
-/* Transição entre a home e a próxima seção */
 .home-out {
   opacity: 0;
   background-image: url('background.jpg');
   height: 100vh;
-  /* Mantenha altura completa para garantir que a transição não empurre o conteúdo */
 }
 
-/* Continuar com os outros estilos das seções */
 .sobre-mim,
 .projetos,
 .contato {
@@ -94,14 +83,10 @@ body::before {
   display: none;
   transform: translateY(20px);
   border: 1px solid var(--glass-border);
-  /* Borda */
   box-shadow: var(--shadow);
-  /* Sombra */
   border-radius: var(--radius);
-  /* Bordas arredondadas */
   backdrop-filter: blur(10px) saturate(140%);
   background: var(--card-bg);
-  /* Efeito de desfoque no fundo */
   max-width: 1400px;
   width: 95%;
   margin: 0;
@@ -117,25 +102,20 @@ body::before {
 }
 
 
-/* Adiciona transição de background para a seção 'Sobre Mim' */
 .sobre-mim {
   transition: background-image 1s ease;
-  /* Transição de imagem de fundo */
 }
 
-/* Quando a seção 'Sobre Mim' estiver visível */
 .sobre-mim.active {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* Quando a seção 'Contato' estiver visível */
 .contato.active {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* Estilos adicionais */
 .logo {
   position: absolute;
   top: 20px;
@@ -177,12 +157,10 @@ body::before {
   box-shadow: 0 10px 28px rgba(0, 0, 0, .5);
 }
 
-/* Ajuste manual da altura da imagem no Sobre Mim */
 .sobre-mim .profile-image {
   margin-top: 0;
 }
 
-/* Títulos das seções e faixa */
 .section-title {
   background-color: #FF5722;
   padding: 10px 0;
@@ -192,7 +170,6 @@ body::before {
   position: relative;
   border-radius: 20px;
   z-index: 2;
-  /* Certifique-se de que o título esteja acima de outros elementos */
 }
 
 .section-title h2 {
@@ -205,12 +182,9 @@ body::before {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  /* Impede a interação quando o menu estiver escondido */
   transition: opacity 0.5s ease-in-out, visibility 0s 0.5s;
-  /* Transição suave de opacidade e visibilidade */
 }
 
-/* Menu oculto */
 .menu {
   position: fixed;
   z-index: 999;
@@ -238,29 +212,22 @@ body::before {
 }
 
 
-/* Ícone do Menu */
 .menu-icon {
   font-size: 22px;
   color: #fff;
   transition: transform 0.3s ease, color 0.3s ease;
-  /* Transição para transformação e cor */
 }
 
 .menu-icon:hover {
   transform: scale(1.1);
-  /* Aumenta o ícone ao passar o mouse */
   color: #6422ff;
-  /* Altera a cor ao passar o mouse */
 }
 
 .menu-icon:active {
   transform: scale(0.95);
-  /* Reduz o ícone ao ser clicado */
   transition: transform 0.1s ease;
-  /* Transição rápida para o efeito de clique */
 }
 
-/* Dropdown do menu */
 .dropdown {
   position: absolute;
   top: 64px;
@@ -310,16 +277,12 @@ body::before {
   border-radius: 10px;
 }
 
-/* Hover no menu */
 .menu:hover .dropdown {
   /* opacity: 1;
   transform: translateY(0);
   pointer-events: auto; */
-  /* Torna o dropdown clicável */
-  /* Comentado pois o comportamento foi alterado para click */
 }
 
-/* Adicionando um pouco de espaçamento ao menu */
 /* .menu {
   padding: 10px;
 } */
@@ -359,12 +322,10 @@ body::before {
   transition: opacity 0.5s ease-in;
 }
 
-/* Ao adicionar a classe ativa, a seção aparece e desliza */
 .section-enter-active {
   opacity: 1;
 }
 
-/* Container principal */
 .container {
   display: flex;
   align-items: center;
@@ -373,7 +334,6 @@ body::before {
   padding: 20px;
 }
 
-/* Texto principal ao lado da imagem */
 .main-content h2 {
   font-size: 3.5em;
   margin-top: 20px;
@@ -381,7 +341,6 @@ body::before {
 }
 
 
-/* Outros ajustes */
 .text-info,
 .project {
   text-align: left;
@@ -390,13 +349,11 @@ body::before {
 .descricao {
   font-size: 1.3em;
   color: #FF5722;
-  /* Aqui você pode substituir pelo código da cor que deseja */
 }
 
 .Idade {
   font-size: 1.3em;
   color: #FF5722;
-  /* Aqui você pode substituir pelo código da cor que deseja */
 }
 
 .beat-effect {
@@ -435,11 +392,9 @@ p {
   font-size: 1.1em;
 }
 
-/* Seção de Projetos */
 .projetos {
   padding: 40px;
   /* background-color: rgba(244, 244, 244, 0); */
-  /* Cor de fundo semi-transparente */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -453,7 +408,6 @@ p {
   opacity: 1;
 }
 
-/* Estilo base para os cards */
 .project-cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -462,7 +416,6 @@ p {
   width: 100%;
 }
 
-/* Estilos individuais de cada card */
 .project-card {
   background-color: rgba(255, 255, 255, .06);
   border: 1px solid var(--glass-border);
@@ -478,10 +431,9 @@ p {
   max-height: none !important;
   overflow: visible !important;
   width: auto;
-  transform-style: preserve-3d; /* Importante para o efeito 3D */
+  transform-style: preserve-3d;
 }
 
-/* Estilize a barra de rolagem se desejar */
 .project-card::-webkit-scrollbar {
   width: 0;
   height: 0;
@@ -489,14 +441,11 @@ p {
 
 .project-card::-webkit-scrollbar-thumb {
   background-color: #FF5722;
-  /* Cor da barra de rolagem */
   border-radius: 10px;
-  /* Bordas arredondadas da barra de rolagem */
 }
 
 .project-card::-webkit-scrollbar-track {
   background: rgba(255, 255, 255, 0.3);
-  /* Cor do fundo da barra de rolagem */
 }
 
 .project-card:hover {
@@ -510,7 +459,7 @@ p {
   align-items: flex-start;
   gap: 16px;
   margin-bottom: 8px;
-  transform: translateZ(20px); /* Destaque no 3D */
+  transform: translateZ(20px);
 }
 
 .project-header h3 {
@@ -541,7 +490,7 @@ p {
   margin: 0;
   flex-grow: 0;
   margin-bottom: 12px;
-  transform: translateZ(10px); /* Destaque no 3D */
+  transform: translateZ(10px);
 }
 
 .project-stack {
@@ -584,7 +533,7 @@ p {
   display: flex;
   gap: 10px;
   margin-top: 8px;
-  transform: translateZ(30px); /* Botões mais saltados */
+  transform: translateZ(30px);
 }
 
 .btn-project {
@@ -604,11 +553,26 @@ p {
   gap: 6px;
 }
 
+
 .btn-project:hover {
   background: var(--accent);
   border-color: var(--accent);
   color: #000;
   font-weight: 600;
+}
+
+.btn-disabled {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--muted);
+  cursor: not-allowed;
+  border-color: transparent;
+}
+
+.btn-disabled:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--muted);
+  border-color: transparent;
+  font-weight: normal;
 }
 
 .enlarge {
@@ -872,32 +836,26 @@ p {
 }
 
 
-/* Estilos para os ícones no canto inferior esquerdo */
 .text-info .icons {
   position: absolute;
   bottom: 20px;
   left: 20px;
   display: flex;
   gap: 10px;
-  /* Espaçamento entre os ícones */
 }
 
 .text-info .icons i {
   font-size: 30px;
-  /* Tamanho dos ícones */
   color: #FF5722;
-  /* Cor dos ícones */
   transition: transform 0.3s ease;
 }
 
 .text-info .icons i:hover {
   transform: scale(1.2);
-  /* Aumenta o ícone ao passar o mouse */
 }
 
 
 .skills h3 {
-  /*Mudar texto Habilidades e Tecnologias*/
   font-size: 1.8em;
   color: #FF5722;
   margin-bottom: 20px;
@@ -912,8 +870,6 @@ p {
   flex-wrap: wrap;
 }
 
-
-/* Estilo para as informações de contato */
 .text-info {
   font-size: 1.1em;
   line-height: 1.8;
@@ -944,15 +900,12 @@ p {
   margin-left: 10px;
   transition: opacity 0.3s ease;
   opacity: 1;
-  /* Inicialmente oculto */
 }
 
-/* Estilo para mostrar as informações */
 .text-info span.show {
   opacity: 1;
 }
 
-/* Estilo para links e redirecionamentos */
 .text-info a {
   color: #FF5722;
   text-decoration: none;
@@ -962,7 +915,6 @@ p {
   text-decoration: underline;
 }
 
-/* Modal Styles */
 .modal-overlay {
   display: none;
   position: fixed;
@@ -971,7 +923,7 @@ p {
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.8);
-  z-index: 3000; /* Garante que fique acima do menu (2000) */
+  z-index: 3000;
   justify-content: center;
   align-items: center;
   backdrop-filter: blur(5px);
@@ -1022,7 +974,6 @@ p {
   color: var(--accent);
 }
 
-/* Novos estilos para Modal Rico */
 .modal-hero {
   width: 100%;
   height: 200px;
@@ -1175,7 +1126,6 @@ p {
   justify-content: flex-end;
 }
 
-/* Contato Premium */
 .contact-header {
   text-align: center;
   margin-bottom: 40px;
@@ -1298,7 +1248,6 @@ p {
   }
 }
 
-/* Reveal on Scroll Animations */
 .reveal {
   opacity: 0;
   transform: translateY(30px);
@@ -1328,17 +1277,15 @@ p {
 
 @media (max-width: 768px) {
 
-  /* Ajustes Globais */
   body {
-    overflow-y: hidden; /* Bloqueia scroll do body */
+    overflow-y: hidden;
     height: 100vh;
-    height: 100dvh; /* Melhor suporte mobile */
+    height: 100dvh;
     min-height: 100vh;
     min-height: 100dvh;
     padding-bottom: 0;
   }
 
-  /* Container Principal */
   .container {
     padding: 16px;
     flex-direction: column;
@@ -1346,30 +1293,29 @@ p {
     height: 100dvh;
   }
 
-  /* Home Section */
   .home {
     height: 100vh;
     height: 100dvh;
     min-height: 100vh;
     min-height: 100dvh;
-    padding-top: 80px; /* Espaço para o menu não sobrepor */
+    padding-top: 80px;
     padding-bottom: 40px;
-    position: fixed; /* Fixa para não rolar com o conteúdo */
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    overflow-y: auto; /* Permite scroll interno se necessário */
+    overflow-y: auto;
     background-attachment: scroll;
-    display: block; /* Remove flexbox centralizado que corta conteúdo alto */
+    display: block;
   }
 
   .hero-content {
     padding: 16px;
     display: flex;
     flex-direction: column;
-    align-items: center; /* Centraliza itens */
+    align-items: center;
     width: 100%;
-    min-height: auto; /* Remove altura mínima excessiva */
+    min-height: auto;
   }
 
   .profile-container {
@@ -1380,53 +1326,40 @@ p {
     justify-content: flex-start;
   }
 
-  /* Ajustes das Seções (Sobre, Projetos, Contato) */
   #sobre-mim,
   #projetos,
   #contato {
-    width: 100%; /* Largura total da tela */
-    height: 100vh; /* Altura total da tela */
-    height: 100dvh; /* Altura dinâmica para mobile */
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
     max-height: 100dvh;
-    margin: 0; /* Remove margem centralizada */
-    padding: 24px 20px 100px 20px; /* Aumentei muito o padding-bottom para scroll */
-    padding-top: 80px; /* Mais espaço para o menu não atrapalhar */
-    overflow-y: auto; /* Scroll interno */
-    -webkit-overflow-scrolling: touch; /* Suavidade no iOS */
-    touch-action: pan-y; /* Permite scroll vertical */
-    position: fixed; /* Fixa sobre a home */
+    margin: 0;
+    padding: 24px 20px 100px 20px;
+    padding-top: 80px;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-y;
+    position: fixed;
     top: 0;
     left: 0;
-    transform: none !important; /* Remove transforms de centralização */
-    border-radius: 0; /* Remove cantos arredondados */
-    background: rgba(16, 16, 16, 0.98); /* Fundo quase sólido para foco total */
+    transform: none !important;
+    border-radius: 0;
+    background: rgba(16, 16, 16, 0.98);
     z-index: 10;
-    box-shadow: none; /* Remove sombra externa */
-    border: none; /* Remove borda */
-    box-sizing: border-box; /* Garante que padding não some largura */
-    
-    /* REMOVIDO: Opacity e Visibility fixos */
-    /* Deixamos o JS controlar via style inline */
-    display: none; /* Padrão oculto */
+    box-shadow: none;
+    border: none;
+    box-sizing: border-box;
+    display: none;
   }
 
-  /* Ajuste para quando a seção está ativa */
-  #sobre-mim.active,
-  #projetos.active,
-  #contato.active {
-    /* REMOVIDO: Dependência única da classe */
-    /* O JS vai injetar display block */
-  }
-
-  /* Menu Mobile - Fixo no topo direito */
   .menu {
     position: fixed;
     top: 16px;
     right: 16px;
     width: 48px;
     height: 48px;
-    z-index: 2000; /* Garante que fique acima */
-    background: #000; /* Fundo preto para melhor contraste */
+    z-index: 2000;
+    background: #000;
     backdrop-filter: blur(10px);
   }
 
@@ -1434,31 +1367,28 @@ p {
     width: 200px;
     right: 0;
     top: 60px;
-    z-index: 2001; /* Garante que o dropdown fique acima do botão e das seções */
-    background: #000; /* Janela preta para melhor visualização */
+    z-index: 2001;
+    background: #000;
   }
 
-  /* --- Estilizações Internas Restauradas para Mobile --- */
-
-  /* Otimizações Home Mobile */
   .tech-icons {
-    display: flex; /* Restaurar ícones */
+    display: flex;
     justify-content: center;
     gap: 12px;
     margin-bottom: 12px;
-    flex-wrap: wrap; /* Garante que ícones quebrem linha se necessário */
+    flex-wrap: wrap;
   }
   
   .tech-icon {
-    font-size: 32px; /* Reduzir tamanho dos ícones */
+    font-size: 32px;
   }
 
   .home {
-    padding-top: 60px; /* Reduzir padding para caber tudo */
+    padding-top: 60px;
     align-items: flex-start; 
     height: 100vh;
     height: 100dvh;
-    overflow-y: auto; /* Garantir scroll */
+    overflow-y: auto;
   }
 
   .profile-text {
@@ -1473,7 +1403,7 @@ p {
     font-size: 2.2rem; 
     line-height: 1.2;
     margin-bottom: 8px;
-    white-space: normal; /* Garante quebra de linha */
+    white-space: normal;
     max-width: 100%;
     padding: 0 10px;
   }
@@ -1482,25 +1412,25 @@ p {
     font-size: 1.1rem;
     margin-top: 8px;
     line-height: 1.4;
-    white-space: normal; /* Garante quebra de linha */
-    max-width: 100%; /* Limita largura ao container */
-    padding: 0 16px; /* Adiciona padding lateral para não colar na borda */
+    white-space: normal;
+    max-width: 100%;
+    padding: 0 16px;
     box-sizing: border-box;
   }
 
   .hero-description {
     font-size: 0.95rem;
-    margin-bottom: 16px; /* Reduzir margem inferior */
+    margin-bottom: 16px;
     line-height: 1.4;
-    padding: 0 16px; /* Aumentei padding lateral */
-    max-height: none; /* Remove limite de altura para não cortar texto longo */
+    padding: 0 16px;
+    max-height: none;
     overflow: visible;
-    white-space: normal; /* Garante quebra */
+    white-space: normal;
   }
   
   .social-links {
     margin-top: 8px;
-    margin-bottom: 40px; /* Espaço extra no final para garantir visibilidade */
+    margin-bottom: 40px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -1508,13 +1438,11 @@ p {
   }
   
   .social-link {
-    padding: 10px 16px; /* Botões um pouco menores */
+    padding: 10px 16px;
     font-size: 0.9rem;
   }
 
-  /* Títulos de Seção Mobile (Sobre Mim, Projetos, Contato) - Restaurado */
   .section-title {
-    /* Mantém estilo original laranja */
     padding: 10px 0;
     margin: 0 0 20px 0;
     width: 100%;
@@ -1522,16 +1450,15 @@ p {
     text-align: center;
     border-bottom: none;
     display: block;
-    background-color: #FF5722; /* Restaurado */
+    background-color: #FF5722;
   }
 
   .section-title h2 {
     font-size: 1.8rem;
-    color: #fff; /* Restaurado */
+    color: #fff;
     margin: 0;
   }
 
-  /* Ajustes Globais de Texto para Mobile */
   .text-info p, .intro p, .project-card p, .contact-info p, .skills h3 {
     white-space: normal;
     overflow-wrap: break-word;
@@ -1540,27 +1467,25 @@ p {
     box-sizing: border-box;
   }
 
-  /* Ajuste específico para Skills Title Overflow */
   .skills h3 {
     font-size: 1.4rem;
     margin-bottom: 16px;
-    text-align: center; /* Centralizado novamente */
+    text-align: center;
     white-space: normal;
     line-height: 1.3;
-    padding: 0 10px; /* Padding extra */
+    padding: 0 10px;
   }
 
-  /* Projetos - Restaurado para Coluna mas ajustado */
   .project-actions {
     display: flex;
-    flex-direction: column; /* Restaurado para coluna conforme pedido implícito de reversão */
+    flex-direction: column;
     gap: 10px;
     margin-top: 12px;
     width: 100%;
   }
 
   .btn-project {
-    width: 100%; /* Largura total */
+    width: 100%;
     padding: 12px;
     font-size: 0.9rem;
     display: flex;
@@ -1573,20 +1498,18 @@ p {
     padding: 20px;
   }
 
-  /* Otimizações Sobre Mim Mobile */
   .profile-info {
-    flex-direction: column-reverse; /* Imagem em cima, texto em baixo */
+    flex-direction: column-reverse;
     gap: 16px;
     align-items: center;
     width: 100%;
     box-sizing: border-box;
   }
 
-  /* Otimizações Sobre Mim Mobile - Imagem separada */
   .profile-image {
-    width: 140px; /* Reduzi um pouco mais */
+    width: 140px;
     height: 140px;
-    margin: 0 auto 16px auto; /* Reduzi margin bottom */
+    margin: 0 auto 16px auto;
     border-width: 3px;
     box-shadow: 0 5px 20px rgba(0,0,0,0.5);
     border-radius: 50%;
@@ -1595,28 +1518,27 @@ p {
   }
   
   #sobre-mim .profile-image {
-    margin-top: 20px; /* Garante que não cole no título */
+    margin-top: 20px;
   }
 
   .profile-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border: none; /* Remove borda da img pois está no container */
+    border: none;
     box-shadow: none;
   }
   
-  /* Ajustes Globais Mobile */
   .text-info p {
-    justify-content: flex-start; /* Alinha à esquerda */
-    flex-direction: row; /* Mantém ícone ao lado */
+    justify-content: flex-start;
+    flex-direction: row;
     gap: 12px;
   }
 
   .text-info {
-    text-align: left; /* Melhor legibilidade para texto longo */
+    text-align: left;
     width: 100%;
-    padding: 0 10px; /* Pequeno espaçamento lateral */
+    padding: 0 10px;
     box-sizing: border-box;
   }
   
@@ -1649,14 +1571,14 @@ p {
 
   .skills-group li {
     width: 100%;
-    box-sizing: border-box; /* Garante que padding não estoure largura */
+    box-sizing: border-box;
     padding: 10px 8px;
     font-size: 0.8rem;
-    justify-content: center; /* Alinha ícone e texto ao centro */
+    justify-content: center;
     text-align: center;
-    white-space: normal; /* Permite que texto quebre se necessário */
+    white-space: normal;
     height: auto;
-    min-height: 44px; /* Altura mínima para toque */
+    min-height: 44px;
     display: flex;
     align-items: center;
     line-height: 1.2;
@@ -1664,7 +1586,7 @@ p {
   
   .skills-group ul {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Mantém 2 colunas */
+    grid-template-columns: repeat(2, 1fr);
     gap: 10px;
     width: 100%;
     padding: 0;
@@ -1672,10 +1594,9 @@ p {
   }
 
   .skills-group li:hover {
-    transform: none; /* Remove efeito hover no mobile */
+    transform: none;
   }
 
-  /* Projetos Interno - Refinado */
   .project-cards {
     display: flex;
     flex-direction: column;
@@ -1687,12 +1608,12 @@ p {
   }
 
   .project-card {
-    padding: 16px; /* Padding reduzido */
+    padding: 16px;
     transform: none !important;
     width: 100%;
     box-sizing: border-box;
     margin: 0;
-    background: rgba(255, 255, 255, 0.05); /* Fundo um pouco mais visível */
+    background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow: none;
     height: auto;
@@ -1706,17 +1627,17 @@ p {
   }
 
   .project-header i {
-    font-size: 1.5rem; /* Ícone menor */
+    font-size: 1.5rem;
     margin-top: 2px;
   }
 
   .project-header h3 {
-    font-size: 1.2rem; /* Título ajustado */
+    font-size: 1.2rem;
     line-height: 1.2;
   }
 
   .project-card > p {
-    font-size: 0.9rem; /* Descrição menor */
+    font-size: 0.9rem;
     margin-bottom: 12px;
     line-height: 1.4;
   }
@@ -1727,19 +1648,18 @@ p {
   }
 
   .project-actions {
-    flex-direction: row; /* Botões lado a lado */
-    flex-wrap: wrap; /* Quebra linha se necessário */
+    flex-direction: row;
+    flex-wrap: wrap;
     gap: 8px;
     margin-top: 12px;
   }
 
-  /* Botões de Projeto - Ajuste de Texto */
   .btn-project {
     width: auto;
-    flex: 1 1 45%; /* Ocupa metade menos gap */
-    padding: 10px 8px; /* Padding menor */
+    flex: 1 1 45%;
+    padding: 10px 8px;
     font-size: 0.85rem;
-    white-space: normal; /* Permite quebra em botões se muito longo */
+    white-space: normal;
     text-align: center;
     line-height: 1.2;
   }
@@ -1748,10 +1668,9 @@ p {
     transform: none;
   }
   
-  /* Ajuste no título da seção */
   .section-title {
     width: auto;
-    margin-left: -10px; /* Expande um pouco para as bordas se quiser, ou mantém contido */
+    margin-left: -10px;
     margin-right: -10px;
     border-radius: 12px;
     padding: 8px 0;
@@ -1761,7 +1680,6 @@ p {
     font-size: 1.5rem;
   }
 
-  /* Contato Interno */
   .contact-grid {
     grid-template-columns: 1fr;
     gap: 16px;
@@ -1780,7 +1698,6 @@ p {
     font-size: 1.5rem;
   }
 
-  /* Modais */
   .modal-content {
     padding: 24px 16px;
     width: 95%;

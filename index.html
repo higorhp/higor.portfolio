@@ -137,7 +137,7 @@
                 <div class="project-actions" style="flex-wrap:wrap">
                     <a href="https://www.granamind.com.br" target="_blank" class="btn-project" style="flex:1 1 100%;background:rgba(76,175,80,0.1);border-color:rgba(76,175,80,0.3);color:#4CAF50"><i class="fa-solid fa-globe"></i> Acessar Site</a>
                     <a href="javascript:void(0)" onclick="openModal('granamind')" class="btn-project">Ver detalhes</a>
-                    <a href="https://github.com/higorhp" target="_blank" class="btn-project"><i class="fa-brands fa-github"></i> GitHub</a>
+                    <span class="btn-project btn-disabled" title="Repositório Privado"><i class="fa-solid fa-lock"></i> Privado</span>
                 </div>
             </div>
 
@@ -155,7 +155,7 @@
                 <div class="project-status">Status: <span class="status-dot done"></span> Concluído</div>
                 <div class="project-actions">
                     <a href="javascript:void(0)" onclick="openModal('botpromo')" class="btn-project">Ver detalhes</a>
-                    <a href="https://github.com/higorhp" target="_blank" class="btn-project"><i class="fa-brands fa-github"></i> GitHub</a>
+                    <span class="btn-project btn-disabled" title="Repositório Privado"><i class="fa-solid fa-lock"></i> Privado</span>
                 </div>
             </div>
 
@@ -174,24 +174,6 @@
                 <div class="project-actions">
                     <a href="javascript:void(0)" onclick="openModal('portfolio')" class="btn-project">Ver detalhes</a>
                     <a href="https://github.com/higorhp/higor.portfolio" target="_blank" class="btn-project"><i class="fa-brands fa-github"></i> GitHub</a>
-                </div>
-            </div>
-
-            <!-- Jarvis -->
-            <div class="project-card">
-                <div class="project-header">
-                    <i class="fa-solid fa-microchip"></i>
-                    <div>
-                        <h3>Projeto Jarvis</h3>
-                        <p>Assistente Virtual</p>
-                    </div>
-                </div>
-                <p>Assistente virtual para automação e execução de comandos por voz, integrando controle de dispositivos e tarefas.</p>
-                <div class="project-stack">Stack: Python • Automação • APIs</div>
-                <div class="project-status">Status: <span class="status-dot wip"></span> Pausado</div>
-                <div class="project-actions">
-                    <a href="javascript:void(0)" onclick="openModal('jarvis')" class="btn-project">Ver detalhes</a>
-                    <a href="https://github.com/higorhp" target="_blank" class="btn-project"><i class="fa-brands fa-github"></i> GitHub</a>
                 </div>
             </div>
 
@@ -265,7 +247,6 @@
 
 
 
-    <!-- Templates de Descrição -->
     <template id="desc-granamind">
         <div class="modal-hero" style="background:transparent;border:none;height:auto;display:flex;justify-content:center;margin-bottom:0">
             <img src="imagens_granamind/logo.jpg" alt="Dashboard GranaMind" style="width:50%;border-radius:12px;margin:0;box-shadow:0 10px 30px rgba(0,0,0,.5)">
@@ -425,8 +406,9 @@
         </div>
 
         <div style="text-align:center;color:#ddd;margin-bottom:32px;font-size:1rem;line-height:1.6">
-            <p>Este portfólio não é apenas uma vitrine de projetos, mas um projeto em si. Desenvolvido para demonstrar domínio em <strong>Frontend nativo</strong>, utiliza técnicas avançadas de CSS e JavaScript puro para criar uma experiência imersiva.</p>
-            <p style="margin-top:12px">O design adota o estilo <strong>Glassmorphism</strong>, combinando transparências, desfoque e neons para um visual futurista e elegante.</p>
+            <p>Este portfólio não é apenas uma vitrine de projetos, mas também um projeto em si. Ele foi desenvolvido para demonstrar minhas habilidades em Frontend nativo, utilizando HTML, CSS e JavaScript puro para criar uma experiência interativa e imersiva.</p>
+            <p style="margin-top:12px">O design segue o estilo Glassmorphism, combinando transparências, efeitos de desfoque e elementos em neon para criar uma interface moderna, futurista e visualmente elegante.</p>
+            <p style="margin-top:12px">Além de apresentar meus projetos, o portfólio também reflete minha preocupação com design, experiência do usuário e organização da interface, explorando recursos avançados de CSS e interações em JavaScript.</p>
         </div>
 
         <h3 style="margin-bottom:16px;display:flex;align-items:center;gap:10px">✨ Destaques do Projeto</h3>
@@ -507,7 +489,6 @@
         </div>
     </template>
 
-    <!-- Modal HTML -->
     <div id="project-modal" class="modal-overlay">
         <div class="modal-content">
             <span class="close-modal" onclick="closeModal()">&times;</span>
