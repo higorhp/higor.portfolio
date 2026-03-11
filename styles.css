@@ -99,8 +99,8 @@ body {
 .profile-image {
   width: 20vw;
   height: 20vw;
-  max-width: 250px;
-  max-height: 250px;
+  max-width: 870px;
+  max-height: 870px;
   border: 5px solid #FF5722;
   border-radius: 50%;
   padding: 5px;
@@ -253,7 +253,7 @@ body {
 }
 
 .section-enter {
-  opacity: 100;
+  opacity: 1;
   transition: opacity 0.5s ease-in;
 }
 
