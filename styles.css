@@ -1,7 +1,30 @@
+:root {
+  --accent: #FF5722;
+  --accent2: #9C27B0;
+  --text: #fff;
+  --muted: #cfd3d7;
+  --card-bg: rgba(16, 16, 16, .45);
+  --glass-border: rgba(255, 255, 255, .08);
+  --radius: 16px;
+  --shadow: 0 10px 30px rgba(0, 0, 0, .35)
+}
+
+/* Canvas para partículas */
+#particles-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Fica atrás de tudo */
+  pointer-events: none; /* Não interfere no clique */
+}
+
 /* Corpo da página */
 body {
   margin: 0;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Inter', 'Roboto', sans-serif;
+  background-color: #111; /* Cor de fundo caso a imagem falhe */
   background-image: url('background.jpg');
   /* A imagem do fundo que se move */
   background-size: cover;
@@ -16,6 +39,27 @@ body {
   color: #fff;
   transition: background-position 0.3s ease;
   scrollbar-width: none;
+  -ms-overflow-style: none;
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+body::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, .75), rgba(0, 0, 0, .75)); /* Escureci um pouco mais para destacar as partículas */
+  pointer-events: none;
+  z-index: -1; /* Ajustado para ficar logo acima do canvas/imagem mas abaixo do conteúdo */
 }
 
 /* Estilo para a seção inicial (home) */
@@ -43,20 +87,33 @@ body {
 .sobre-mim,
 .projetos,
 .contato {
-  padding: 20px;
+  padding: 40px;
   text-align: center;
   opacity: 0;
   transition: opacity 1s ease, transform 0.5s ease;
   display: none;
   transform: translateY(20px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--glass-border);
   /* Borda */
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  box-shadow: var(--shadow);
   /* Sombra */
-  border-radius: 8px;
+  border-radius: var(--radius);
   /* Bordas arredondadas */
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px) saturate(140%);
+  background: var(--card-bg);
   /* Efeito de desfoque no fundo */
+  max-width: 1400px;
+  width: 95%;
+  margin: 0;
+  max-height: 85vh;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+.sobre-mim::-webkit-scrollbar,
+.projetos::-webkit-scrollbar,
+.contato::-webkit-scrollbar {
+  display: none
 }
 
 
@@ -92,26 +149,37 @@ body {
 
 .profile-info {
   display: flex;
-  justify-content: left;
+  justify-content: space-between;
   align-items: center;
+  gap: 40px;
+}
+
+.profile-info .text-info {
+  flex: 1;
+  text-align: left;
+}
+
+.profile-info .profile-image {
+  flex-shrink: 0;
 }
 
 .profile-image {
-  width: 20vw;
-  height: 20vw;
-  max-width: 870px;
-  max-height: 870px;
-  border: 5px solid #FF5722;
-  border-radius: 50%;
-  padding: 5px;
-  margin-left: 20px;
+  border: none !important;
+  padding: 0 !important;
 }
 
 .profile-image img {
-  width: 100%;
-  height: auto;
-  border-radius: 50%;
+  width: 420px;
+  height: 420px;
   object-fit: cover;
+  border-radius: 50%;
+  border: 6px solid var(--accent);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, .5);
+}
+
+/* Ajuste manual da altura da imagem no Sobre Mim */
+.sobre-mim .profile-image {
+  margin-top: 0;
 }
 
 /* Títulos das seções e faixa */
@@ -136,25 +204,43 @@ body {
 .hide-menu {
   opacity: 0;
   visibility: hidden;
-  pointer-events: none;  /* Impede a interação quando o menu estiver escondido */
-  transition: opacity 0.5s ease-in-out, visibility 0s 0.5s; /* Transição suave de opacidade e visibilidade */
+  pointer-events: none;
+  /* Impede a interação quando o menu estiver escondido */
+  transition: opacity 0.5s ease-in-out, visibility 0s 0.5s;
+  /* Transição suave de opacidade e visibilidade */
 }
 
 /* Menu oculto */
 .menu {
   position: fixed;
-  top: 35px;
-  right: 35px;
-  z-index: 99999;
-  cursor: pointer;
-  opacity: 1; /* Inicia visível */
-  transform: translateY(0);
-  transition: opacity 0.5s ease, transform 0.5s ease; /* Suave transição */
+  z-index: 999;
+  top: 24px;
+  right: 24px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: rgba(255, 255, 255, .06);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(10px) saturate(140%);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .35);
+  transition: box-shadow .2s ease, transform .2s ease;
+  padding: 0;
 }
+
+.menu:hover {
+  transform: translateY(-1px);
+}
+
+.menu.open {
+  box-shadow: 0 12px 28px rgba(0, 0, 0, .5);
+}
+
 
 /* Ícone do Menu */
 .menu-icon {
-  font-size: 2em;
+  font-size: 22px;
   color: #fff;
   transition: transform 0.3s ease, color 0.3s ease;
   /* Transição para transformação e cor */
@@ -177,62 +263,78 @@ body {
 /* Dropdown do menu */
 .dropdown {
   position: absolute;
-  top: 50px;
+  top: 64px;
   right: 0;
-  background-color: #333;
-  border-radius: 10px;
-  flex-direction: column;
+  background-color: var(--card-bg);
+  backdrop-filter: blur(12px) saturate(140%);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow);
+  border-radius: 14px;
+  padding: 8px;
+  min-width: 220px;
+  transform-origin: top right;
   opacity: 0;
-  /* Inicialmente invisível */
-  transform: translateY(-10px);
-  /* Leve deslocamento para a animação */
-  transition: opacity 0.3s ease, transform 0.3s ease;
   pointer-events: none;
-  /* Impede que o dropdown seja clicável quando invisível */
+  transform: translateY(-8px) scale(.96);
+  transition: opacity .18s ease, transform .18s ease;
+  flex-direction: column;
 }
 
 .dropdown.show {
   opacity: 1;
-  /* Torna visível */
-  transform: translateY(0);
-  /* Remove o deslocamento para a animação */
   pointer-events: auto;
-  /* Permite cliques quando visível */
+  transform: translateY(0) scale(1);
 }
 
 .dropdown a {
-  display: block;
-  padding: 10px 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-radius: 10px;
+  padding: 12px 14px;
   color: #fff;
   text-decoration: none;
   transition: background-color 0.3s ease;
-  /* Transição suave na cor de fundo */
 }
 
+.dropdown a i {
+  width: 18px;
+  text-align: center;
+  color: var(--accent);
+}
+
+
 .dropdown a:hover {
-  background-color: #444;
-  /* Cor de fundo ao passar o mouse */
+  background-color: rgba(255, 255, 255, .08);
+  color: var(--accent);
   border-radius: 10px;
 }
 
 /* Hover no menu */
 .menu:hover .dropdown {
-  opacity: 1;
+  /* opacity: 1;
   transform: translateY(0);
-  pointer-events: auto;
+  pointer-events: auto; */
   /* Torna o dropdown clicável */
+  /* Comentado pois o comportamento foi alterado para click */
 }
 
 /* Adicionando um pouco de espaçamento ao menu */
-.menu {
+/* .menu {
   padding: 10px;
-}
+} */
 
 .icons {
   display: flex;
   justify-content: center;
   margin-top: 10px;
 }
+
+.icons i,
+.custom-icon {
+  color: var(--accent);
+}
+
 
 .icons i {
   font-size: 40px;
@@ -278,10 +380,6 @@ body {
   color: #FF5722;
 }
 
-/* Estilo para a imagem */
-.profile-image {
-  border: 5px solid #ff5722;
-}
 
 /* Outros ajustes */
 .text-info,
@@ -339,8 +437,8 @@ p {
 
 /* Seção de Projetos */
 .projetos {
-  padding: 25px 20px;
-  background-color: rgba(244, 244, 244, 0);
+  padding: 40px;
+  /* background-color: rgba(244, 244, 244, 0); */
   /* Cor de fundo semi-transparente */
   display: flex;
   flex-direction: column;
@@ -357,43 +455,36 @@ p {
 
 /* Estilo base para os cards */
 .project-cards {
-  padding: 30px 30px;
-  justify-content: center;
-  /* Alinha os cards no centro horizontalmente */
-  gap: 20px;
-  flex-wrap: wrap;
-  /* Permite que os cards quebrem a linha */
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  justify-items: center;
-  /* Centraliza os itens dentro de cada coluna */
-  margin-top: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 48px;
+  padding: 32px 0;
+  width: 100%;
 }
 
 /* Estilos individuais de cada card */
 .project-card {
-  background-color: rgba(255, 255, 255, 0.8);
-  /* Fundo transparente */
-  border: 1px solid #FF5722;
-  border-radius: 10px;
-  width: 300px;
-  /* Mantém largura padrão */
-  padding: 20px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-  flex-grow: 1;
-
-  /* Novas propriedades para scroll */
-  max-height: 400px;
-  /* Altura máxima do card */
-  overflow-y: auto;
-  /* Permite rolagem vertical */
+  background-color: rgba(255, 255, 255, .06);
+  border: 1px solid var(--glass-border);
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+  scrollbar-width: none;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition: all .3s ease;
+  height: 100%;
+  max-height: none !important;
+  overflow: visible !important;
+  width: auto;
+  transform-style: preserve-3d; /* Importante para o efeito 3D */
 }
 
 /* Estilize a barra de rolagem se desejar */
 .project-card::-webkit-scrollbar {
-  width: 8px;
-  /* Largura da barra de rolagem */
+  width: 0;
+  height: 0;
 }
 
 .project-card::-webkit-scrollbar-thumb {
@@ -409,36 +500,377 @@ p {
 }
 
 .project-card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+  transform: translateY(-5px);
+  border-color: var(--accent);
+  box-shadow: 0 12px 30px rgba(255, 87, 34, .2);
 }
 
 .project-header {
-  margin-bottom: 15px;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 8px;
+  transform: translateZ(20px); /* Destaque no 3D */
 }
 
 .project-header h3 {
-  font-size: 1.8em;
-  margin: 0 0 10px;
-  color: #FF5722;
+  margin: 0;
+  font-size: 1.3rem;
+  font-weight: 700;
+  line-height: 1.4;
+  color: #fff;
 }
 
 .project-header p {
-  font-size: 1em;
-  margin: 0;
-  color: #666;
+  margin: 4px 0 0 0;
+  font-size: 0.9rem;
+  color: var(--muted);
 }
 
 .project-header i {
-  color: #3498db;
-  margin-right: 10px;
+  font-size: 1.8rem;
+  color: var(--accent);
+  margin-top: 4px;
+  margin-right: 0;
 }
 
-.project-card p {
-  font-size: 1.1em;
+.project-card>p {
+  font-size: 1rem;
   line-height: 1.6;
-  color: #333;
+  color: #ddd;
+  margin: 0;
+  flex-grow: 0;
+  margin-bottom: 12px;
+  transform: translateZ(10px); /* Destaque no 3D */
 }
+
+.project-stack {
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin-top: auto;
+  margin-bottom: 4px;
+  font-family: 'Courier New', monospace;
+  transform: translateZ(10px);
+}
+
+.project-status {
+  font-size: 0.9rem;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #eee;
+  transform: translateZ(10px);
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #4CAF50;
+}
+
+.status-dot.wip {
+  background-color: #FF9800;
+  box-shadow: 0 0 8px rgba(255, 152, 0, .4);
+}
+
+.status-dot.done {
+  background-color: #00E676;
+  box-shadow: 0 0 8px rgba(0, 230, 118, .4);
+}
+
+.project-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 8px;
+  transform: translateZ(30px); /* Botões mais saltados */
+}
+
+.btn-project {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid var(--glass-border);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, .05);
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.9rem;
+  text-align: center;
+  transition: all .2s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn-project:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #000;
+  font-weight: 600;
+}
+
+.enlarge {
+  transform: scale(1.01);
+  transition: transform .2s ease;
+}
+
+.hero-content {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  position: relative;
+  z-index: 1;
+}
+
+.profile-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 48px;
+  max-width: 1400px;
+  width: 100%;
+}
+
+.profile-text {
+  max-width: 800px;
+}
+
+.hero-title {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0 0 16px 0;
+}
+
+.hero-title .greeting {
+  font-weight: 600;
+  color: var(--muted);
+  font-size: 1.4rem;
+  letter-spacing: .2px;
+}
+
+.hero-title .name {
+  font-weight: 800;
+  font-size: 5rem;
+  line-height: 1;
+  background: linear-gradient(90deg, var(--accent), #FF3E7F, var(--accent2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, .15);
+  position: relative;
+  display: inline-block;
+  min-height: 1em;
+}
+
+.hero-title .name::after {
+  content: '';
+  position: absolute;
+  right: -5px;
+  top: 10%;
+  height: 80%;
+  width: 4px;
+  background-color: var(--accent);
+  animation: blink .75s step-end infinite;
+}
+
+@keyframes blink {
+
+  from,
+  to {
+    opacity: 1
+  }
+
+  50% {
+    opacity: 0
+  }
+}
+
+.hero-subtitle {
+  margin: 12px 0 0 0;
+  font-weight: 700;
+  font-size: 1.8rem;
+  color: #fff;
+}
+
+.hero-description {
+  margin: 12px 0 24px 0;
+  color: var(--muted);
+  font-size: 1.2rem;
+}
+
+.tech-icons {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  margin: 0 0 16px 0;
+  flex-wrap: wrap;
+}
+
+.tech-icon {
+  font-size: 48px;
+  color: var(--accent);
+  transition: transform .2s ease;
+  animation: floatY 3s ease-in-out infinite;
+}
+
+.tech-icons .tech-icon:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.tech-icons .tech-icon:nth-child(2) {
+  animation-delay: .15s;
+}
+
+.tech-icons .tech-icon:nth-child(3) {
+  animation-delay: .3s;
+}
+
+.tech-icons .tech-icon:nth-child(4) {
+  animation-delay: .45s;
+}
+
+.tech-icons .tech-icon:nth-child(5) {
+  animation-delay: .6s;
+}
+
+.tech-icon:hover {
+  transform: translateY(-2px) scale(1.05);
+}
+
+@keyframes floatY {
+  0% {
+    transform: translateY(0)
+  }
+
+  50% {
+    transform: translateY(-6px)
+  }
+
+  100% {
+    transform: translateY(0)
+  }
+}
+
+.tech-icon.angular {
+  color: #DD0031;
+}
+
+.tech-icon.nest {
+  color: #E0234E;
+}
+
+.tech-icon.typescript {
+  color: #3178C6;
+}
+
+.tech-icon.docker {
+  color: #2496ED;
+}
+
+.tech-icon.sql {
+  color: #FFA726;
+}
+
+.skills-container {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.skills-group h4 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 16px;
+  color: var(--accent);
+  font-size: 1.4rem;
+  border-bottom: 1px solid var(--glass-border);
+  padding-bottom: 12px;
+  width: 100%;
+}
+
+.skills-group ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+}
+
+.skills-group li {
+  flex: 1 1 auto;
+  background: linear-gradient(145deg, rgba(255, 255, 255, .05), rgba(255, 255, 255, .02));
+  padding: 14px 20px;
+  border-radius: 50px;
+  border: 1px solid rgba(255, 255, 255, .1);
+  font-size: 1rem;
+  font-weight: 500;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  transition: all .3s cubic-bezier(.4, 0, .2, 1);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, .1);
+  white-space: nowrap;
+  box-sizing: border-box;
+  margin: 0;
+  color: #fff;
+}
+
+.skills-group li:hover {
+  background: rgba(255, 255, 255, .1);
+  border-color: var(--accent);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(255, 87, 34, .2);
+}
+
+.skills-group li i {
+  font-size: 1.2em;
+  margin-right: 0;
+  color: inherit;
+  transition: none;
+}
+
+.social-links {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 20px;
+  border: 1px solid var(--glass-border);
+  border-radius: 999px;
+  color: #fff;
+  text-decoration: none;
+  background: rgba(255, 255, 255, .08);
+  transition: all .2s ease;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, .25);
+}
+
+.social-link i {
+  font-size: 1.1rem;
+}
+
+.social-link:hover {
+  background: linear-gradient(90deg, var(--accent), #FF3E7F);
+  color: #000;
+  border-color: transparent;
+}
+
 
 /* Estilos para os ícones no canto inferior esquerdo */
 .text-info .icons {
@@ -463,19 +895,6 @@ p {
   /* Aumenta o ícone ao passar o mouse */
 }
 
-/* Layout da seção 'Sobre Mim' */
-.profile-info {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-.profile-info .text-info {
-  flex: 1;
-  padding: 20px;
-  font-size: 1.1em;
-}
 
 .skills h3 {
   /*Mudar texto Habilidades e Tecnologias*/
@@ -493,37 +912,6 @@ p {
   flex-wrap: wrap;
 }
 
-.skills ul li {
-  background-color: #333;
-  border-radius: 10px;
-  padding: 10px 20px;
-  margin: 10px;
-  display: flex;
-  align-items: center;
-  font-size: 1.2em;
-  color: #fff;
-  transition: background-color 0.3s ease;
-}
-
-/* Efeito hover para mudar o fundo do item */
-.skills ul li:hover {
-  background-color: #FF5722;
-}
-
-/* Cor padrão dos ícones */
-.skills ul li i {
-  margin-right: 10px;
-  font-size: 1.5em;
-  color: #FF5722;
-  transition: color 0.3s ease;
-  /* Adiciona transição suave */
-}
-
-/* Cor dos ícones quando o item da lista for hover */
-.skills ul li:hover i {
-  color: #fff;
-  /* Muda a cor dos ícones para branco no hover */
-}
 
 /* Estilo para as informações de contato */
 .text-info {
@@ -574,130 +962,720 @@ p {
   text-decoration: underline;
 }
 
+/* Modal Styles */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 3000; /* Garante que fique acima do menu (2000) */
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(5px);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.modal-overlay.show {
+  display: flex;
+  opacity: 1;
+}
+
+.modal-content {
+  background: var(--card-bg);
+  border: 1px solid var(--glass-border);
+  padding: 48px;
+  border-radius: 20px;
+  max-width: 1400px;
+  width: 95%;
+  position: relative;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  transform: translateY(20px);
+  transition: transform 0.3s ease;
+  backdrop-filter: blur(10px);
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.modal-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 4px;
+}
+
+.modal-content img {
+  width: 100%;
+  border-radius: 8px;
+  margin: 16px 0;
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.modal-content h3,
+.modal-content strong {
+  color: var(--accent);
+}
+
+/* Novos estilos para Modal Rico */
+.modal-hero {
+  width: 100%;
+  height: 200px;
+  background: #222;
+  border-radius: 12px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+  border: 1px dashed var(--glass-border);
+}
+
+.modal-header-rich {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.modal-title-large {
+  font-size: 2rem;
+  font-weight: 800;
+  margin: 0;
+  background: linear-gradient(90deg, var(--accent), #FF3E7F);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.modal-subtitle {
+  font-size: 1.1rem;
+  color: #aaa;
+  margin-top: 8px;
+}
+
+.modal-badges {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 16px;
+}
+
+.modal-badge {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.badge-fullstack {
+  background: rgba(33, 150, 243, 0.2);
+  color: #2196F3;
+  border: 1px solid rgba(33, 150, 243, 0.3);
+}
+
+.badge-done {
+  background: rgba(76, 175, 80, 0.2);
+  color: #4CAF50;
+  border: 1px solid rgba(76, 175, 80, 0.3);
+}
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 16px;
+  margin: 24px 0;
+}
+
+.feature-card {
+  background: rgba(255, 255, 255, 0.03);
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid var(--glass-border);
+  transition: transform 0.2s;
+}
+
+.feature-card:hover {
+  transform: translateY(-3px);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.feature-card h4 {
+  color: #fff;
+  margin: 0 0 8px 0;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.feature-card p {
+  font-size: 0.9rem;
+  color: #ccc;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.tech-stack-visual {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.tech-chip {
+  background: #1a1a1a;
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: 1px solid var(--glass-border);
+  font-size: 0.85rem;
+  color: #ddd;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.tech-chip i {
+  color: var(--accent);
+}
+
+.modal-overlay.show .modal-content {
+  transform: translateY(0);
+}
+
+.close-modal {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  font-size: 28px;
+  color: var(--muted);
+  cursor: pointer;
+  transition: color 0.2s;
+  z-index: 10;
+}
+
+.close-modal:hover {
+  color: var(--accent);
+}
+
+.modal-stack {
+  margin-top: 16px;
+  color: var(--accent);
+  font-family: monospace;
+  font-size: 0.9rem;
+}
+
+.modal-actions {
+  margin-top: 24px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Contato Premium */
+.contact-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(76, 175, 80, .15);
+  color: #4CAF50;
+  padding: 8px 16px;
+  border-radius: 50px;
+  border: 1px solid rgba(76, 175, 80, .3);
+  font-weight: 600;
+  font-size: .9rem;
+  margin-bottom: 24px;
+}
+
+.status-badge::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  background: #4CAF50;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #4CAF50;
+  animation: pulse 2s infinite;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 24px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.contact-card {
+  background: rgba(255, 255, 255, .03);
+  border: 1px solid var(--glass-border);
+  padding: 32px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  text-decoration: none;
+  transition: all .3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--accent);
+  background: rgba(255, 255, 255, .08);
+  box-shadow: 0 15px 40px rgba(255, 87, 34, .25);
+}
+
+.contact-icon-box {
+  width: 64px;
+  height: 64px;
+  background: rgba(255, 255, 255, .05);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  color: var(--accent);
+  transition: all .3s;
+  flex-shrink: 0;
+}
+
+.contact-card:hover .contact-icon-box {
+  background: var(--accent);
+  color: #fff;
+  transform: scale(1.15) rotate(5deg);
+}
+
+.contact-info {
+  overflow: hidden;
+}
+
+.contact-info h4 {
+  margin: 0;
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.contact-info p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+  overflow-wrap: break-word;
+}
+
+.location-footer {
+  text-align: center;
+  margin-top: 60px;
+  color: var(--muted);
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(76, 175, 80, .7)
+  }
+
+  70% {
+    box-shadow: 0 0 0 10px rgba(76, 175, 80, 0)
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(76, 175, 80, 0)
+  }
+}
+
+/* Reveal on Scroll Animations */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media(min-width:1600px) {
+  html {
+    font-size: 18px
+  }
+
+  .profile-container {
+    max-width: 1600px;
+    gap: 60px
+  }
+
+  .profile-image img {
+    width: 500px;
+    height: 500px
+  }
+}
+
 @media (max-width: 768px) {
 
+  /* Ajustes Globais */
   body {
-    overflow-y: hidden; /* Permitir scroll vertical */
-    transition: none; /* Remove transições do body */
+    overflow-y: hidden; /* Bloqueia scroll do body */
+    height: 100vh;
+    height: 100dvh; /* Melhor suporte mobile */
+    min-height: 100vh;
+    min-height: 100dvh;
+    padding-bottom: 0;
   }
 
-  .text-info .icons {
-    bottom: 65px; /* Aumenta o espaço para garantir que fique visível */
-    left: 10px;
-    gap: 8px; /* Ajusta o espaçamento entre os ícones */
-  }
-
-  .text-info .icons i {
-    font-size: 24px; /* Diminui o tamanho dos ícones para caber melhor */
-  }
-  
-  /* Ajustar menu dropdown */
-  .menu {
+  /* Container Principal */
+  .container {
+    padding: 16px;
     flex-direction: column;
-    align-items: flex-start;
+    height: 100vh;
+    height: 100dvh;
+  }
+
+  /* Home Section */
+  .home {
+    height: 100vh;
+    height: 100dvh;
+    min-height: 100vh;
+    min-height: 100dvh;
+    padding-top: 80px; /* Espaço para o menu não sobrepor */
+    padding-bottom: 40px;
+    position: fixed; /* Fixa para não rolar com o conteúdo */
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow-y: auto; /* Permite scroll interno se necessário */
+    background-attachment: scroll;
+    display: block; /* Remove flexbox centralizado que corta conteúdo alto */
+  }
+
+  .hero-content {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centraliza itens */
+    width: 100%;
+    min-height: auto; /* Remove altura mínima excessiva */
+  }
+
+  .profile-container {
+    flex-direction: column-reverse;
+    gap: 24px;
+    text-align: center;
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  /* Ajustes das Seções (Sobre, Projetos, Contato) */
+  .sobre-mim,
+  .projetos,
+  .contato {
+    width: 100%; /* Largura total da tela */
+    height: 100vh; /* Altura total da tela */
+    height: 100dvh; /* Altura dinâmica para mobile */
+    max-height: 100dvh;
+    margin: 0; /* Remove margem centralizada */
+    padding: 24px 20px;
+    padding-top: 80px; /* Mais espaço para o menu não atrapalhar */
+    overflow-y: auto; /* Scroll interno */
+    position: fixed; /* Fixa sobre a home */
+    top: 0;
+    left: 0;
+    transform: none !important; /* Remove transforms de centralização */
+    border-radius: 0; /* Remove cantos arredondados */
+    background: rgba(16, 16, 16, 0.98); /* Fundo quase sólido para foco total */
+    z-index: 10;
+    box-shadow: none; /* Remove sombra externa */
+    border: none; /* Remove borda */
+    /* Estados de visibilidade controlados pelo JS */
+  }
+
+  /* Ajuste para quando a seção está ativa */
+  .sobre-mim.active,
+  .projetos.active,
+  .contato.active {
+    transform: none;
+    opacity: 1;
+  }
+
+  /* Menu Mobile - Fixo no topo direito */
+  .menu {
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    width: 48px;
+    height: 48px;
+    z-index: 2000; /* Garante que fique acima */
+    background: rgba(30, 30, 30, 0.8); /* Fundo mais escuro para contraste */
+    backdrop-filter: blur(10px);
   }
 
   .dropdown {
-    width: 200%;
+    width: 200px;
+    right: 0;
+    top: 60px;
+    z-index: 2001; /* Garante que o dropdown fique acima do botão e das seções */
   }
 
-  .dropdown a {
-    display: block;
-    padding: 10px 15px;
-    border-bottom: 1px solid #ccc;
-  }
+  /* --- Estilizações Internas Restauradas para Mobile --- */
 
-  .home {
-    position: absolute; /* Posiciona em relação ao viewport */
-    top: 0; /* Começa no topo */
-    left: 0; /* Começa à esquerda */
-    right: 0; /* Ocupa toda a largura */
-    bottom: 0; /* Ocupa toda a altura */
-    overflow: hidden; /* Impede a rolagem */
-    padding: 5px; /* Ajuste conforme necessário */
-  }
-  
-  .profile-image {
-    border: 5px solid #ff5722;
-    width: 80px; /* Ajusta a largura da imagem para um tamanho menor */
-    height: auto; /* Mantém a proporção da imagem */
-    margin: 0 auto; /* Centraliza a imagem */
-  }
-
-  .text-info h2 {
-    font-size: 20px; /* Ajustar tamanho da fonte para h2 */
-  }
-
-  .text-info p {
-    font-size: 14px; /* Reduzir tamanho do parágrafo */
-  }
-
-  /* Ajustar layout da seção "Sobre Mim" */
-  .sobre-mim {
-    flex-direction: column;
-    padding: 15px; /* Reduzir padding */
-    margin-bottom: 20px; /* Espaçamento entre seções */
-    height: 90vh; /* Definir altura fixa para permitir scroll */
-    overflow-y: auto; /* Permitir scroll na seção */
-  }
-
-  .sobre-mim .profile-info {
+  /* Tipografia e Layout Home */
+  .profile-text {
+    width: 100%;
+    display: flex;
     flex-direction: column;
     align-items: center;
   }
 
-  .profile-info .profile-image {
-    width: 120px; /* Ajusta o tamanho da imagem no perfil */
+  .hero-title .name {
+    font-size: 2.8rem;
+    line-height: 1.1;
   }
 
-  .skills ul {
-    padding: 0;
-    list-style-type: none;
+  .hero-subtitle {
+    font-size: 1.3rem;
+    margin-top: 16px;
   }
 
-  .skills ul li {
-    margin-bottom: 8px; /* Reduzir margem entre itens da lista */
-    font-size: 14px; /* Reduzir tamanho do texto dos itens */
+  .hero-description {
+    font-size: 1rem;
+    margin-bottom: 32px;
   }
 
-/* Ajustar layout da seção "Projetos" */
-.project-cards {
-    padding: 10px; /* Reduz o padding em telas menores */
-    display: grid;
-    grid-template-columns: 1fr; /* Exibe os cards em uma única coluna */
-    gap: 10px; /* Reduz o espaçamento entre os cards */
-    max-height: 80vh; /* Definir altura máxima para permitir scroll */
-    overflow-y: auto; /* Permitir scroll na seção */
-}
+  /* Otimizações Sobre Mim Mobile */
+  .profile-info {
+    flex-direction: column-reverse; /* Imagem em cima, texto em baixo */
+    gap: 16px;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+  }
 
-.project-card {
-    width: 100%; /* Faz o card ocupar toda a largura disponível */
-    padding: 10px; /* Ajusta o padding dos cards */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra para destaque */
-}
+  /* Otimizações Sobre Mim Mobile - Imagem separada */
+  .profile-image {
+    width: 160px; /* Tamanho controlado do container */
+    height: 160px;
+    margin: 0 auto 24px auto; /* Centraliza */
+    border-width: 3px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+    border-radius: 50%; /* Garante que o container seja redondo */
+    overflow: hidden; /* Garante que a img não vaze */
+    flex-shrink: 0;
+  }
 
+  .profile-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border: none; /* Remove borda da img pois está no container */
+    box-shadow: none;
+  }
+  
+  /* Ajustes Globais Mobile */
+  .text-info p {
+    justify-content: flex-start; /* Alinha à esquerda */
+    flex-direction: row; /* Mantém ícone ao lado */
+    gap: 12px;
+  }
 
-/* Estilos individuais de cada card */
-.project-card {
-  width: 100%; /* Faz o card ocupar toda a largura disponível */
-  padding: 10px; /* Ajusta o padding dos cards */
-  background-color: rgba(255, 255, 255, 0.9); /* Adiciona um fundo branco semi-transparente */
-  border-radius: 5px; /* Bordas arredondadas para os cards */
-}
-
-.project-card h3 {
-  font-size: 14px; /* Reduzir tamanho do título */
-}
-
-.project-card p {
-  font-size: 12px; /* Ajusta o tamanho do texto */
-}
-
-
-  /* Ajustar seção de contato */
-  .contato .text-info {
+  .text-info {
+    text-align: left; /* Melhor legibilidade para texto longo */
+    width: 100%;
+    padding: 0 10px; /* Pequeno espaçamento lateral */
+    box-sizing: border-box;
+  }
+  
+  .intro h2 {
     text-align: center;
-    height: 100vh; /* Definir altura fixa para permitir scroll */
-    overflow-y: auto; /* Permitir scroll na seção */
+    font-size: 1.8rem;
+    margin-bottom: 16px;
+  }
+  
+  .intro p {
+    font-size: 1rem;
+    margin-bottom: 16px;
+    line-height: 1.5;
+  }
+
+  .skills-container {
+    gap: 16px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .skills-group h4 {
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+    text-align: left;
+    padding-left: 0;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .skills-group ul {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Mantém 2 colunas */
+    gap: 8px;
+    width: 100%;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  .skills-group li {
+    width: 100%;
+    box-sizing: border-box; /* Garante que padding não estoure largura */
+    padding: 10px 6px;
+    font-size: 0.8rem;
+    justify-content: flex-start; /* Alinha ícone e texto à esquerda */
+    white-space: normal; /* Permite que texto quebre se necessário */
+    height: auto;
+  }
+
+  .skills-group li:hover {
+    transform: none; /* Remove efeito hover no mobile */
+  }
+
+  /* Projetos Interno - Refinado */
+  .project-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 10px 0 40px 0;
+    width: 100%;
+    margin-top: 10px;
+    box-sizing: border-box;
+  }
+
+  .project-card {
+    padding: 16px; /* Padding reduzido */
+    transform: none !important;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0;
+    background: rgba(255, 255, 255, 0.05); /* Fundo um pouco mais visível */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: none;
+    height: auto;
+  }
+
+  .project-header {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 8px;
+  }
+
+  .project-header i {
+    font-size: 1.5rem; /* Ícone menor */
+    margin-top: 2px;
+  }
+
+  .project-header h3 {
+    font-size: 1.2rem; /* Título ajustado */
+    line-height: 1.2;
+  }
+
+  .project-card > p {
+    font-size: 0.9rem; /* Descrição menor */
+    margin-bottom: 12px;
+    line-height: 1.4;
+  }
+
+  .project-stack, .project-status {
+    font-size: 0.8rem;
+    margin-bottom: 8px;
+  }
+
+  .project-actions {
+    flex-direction: row; /* Botões lado a lado */
+    flex-wrap: wrap; /* Quebra linha se necessário */
+    gap: 8px;
+    margin-top: 12px;
+  }
+
+  .btn-project {
+    width: auto;
+    flex: 1 1 45%; /* Ocupa metade menos gap */
+    padding: 10px 8px; /* Padding menor */
+    font-size: 0.85rem;
+    white-space: nowrap; /* Evita quebra de texto no botão */
+  }
+
+  .project-card:hover {
+    transform: none;
+  }
+  
+  /* Ajuste no título da seção */
+  .section-title {
+    width: auto;
+    margin-left: -10px; /* Expande um pouco para as bordas se quiser, ou mantém contido */
+    margin-right: -10px;
+    border-radius: 12px;
+    padding: 8px 0;
+  }
+  
+  .section-title h2 {
+    font-size: 1.5rem;
+  }
+
+  /* Contato Interno */
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .contact-card {
+    flex-direction: row;
+    align-items: center;
+    padding: 20px;
+    text-align: left;
+  }
+  
+  .contact-icon-box {
+    width: 48px;
+    height: 48px;
+    font-size: 1.5rem;
+  }
+
+  /* Modais */
+  .modal-content {
+    padding: 24px 16px;
+    width: 95%;
+    margin: 10px;
+    max-height: 85vh;
+  }
+
+  .modal-hero {
+    height: 150px;
+  }
+  
+  .modal-hero img {
+    max-width: 80%;
+    height: auto;
+  }
+
+  .modal-title-large {
+    font-size: 1.6rem;
+  }
+  
+  .feature-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .gallery-grid {
+    grid-template-columns: 1fr;
   }
 }
