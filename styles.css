@@ -1381,17 +1381,19 @@ p {
   }
 
   /* Ajustes das Seções (Sobre, Projetos, Contato) */
-  .sobre-mim,
-  .projetos,
-  .contato {
+  #sobre-mim,
+  #projetos,
+  #contato {
     width: 100%; /* Largura total da tela */
     height: 100vh; /* Altura total da tela */
     height: 100dvh; /* Altura dinâmica para mobile */
     max-height: 100dvh;
     margin: 0; /* Remove margem centralizada */
-    padding: 24px 20px;
+    padding: 24px 20px 100px 20px; /* Aumentei muito o padding-bottom para scroll */
     padding-top: 80px; /* Mais espaço para o menu não atrapalhar */
     overflow-y: auto; /* Scroll interno */
+    -webkit-overflow-scrolling: touch; /* Suavidade no iOS */
+    touch-action: pan-y; /* Permite scroll vertical */
     position: fixed; /* Fixa sobre a home */
     top: 0;
     left: 0;
@@ -1401,15 +1403,19 @@ p {
     z-index: 10;
     box-shadow: none; /* Remove sombra externa */
     border: none; /* Remove borda */
-    /* Estados de visibilidade controlados pelo JS */
+    box-sizing: border-box; /* Garante que padding não some largura */
+    
+    /* REMOVIDO: Opacity e Visibility fixos */
+    /* Deixamos o JS controlar via style inline */
+    display: none; /* Padrão oculto */
   }
 
   /* Ajuste para quando a seção está ativa */
-  .sobre-mim.active,
-  .projetos.active,
-  .contato.active {
-    transform: none;
-    opacity: 1;
+  #sobre-mim.active,
+  #projetos.active,
+  #contato.active {
+    /* REMOVIDO: Dependência única da classe */
+    /* O JS vai injetar display block */
   }
 
   /* Menu Mobile - Fixo no topo direito */
@@ -1420,7 +1426,7 @@ p {
     width: 48px;
     height: 48px;
     z-index: 2000; /* Garante que fique acima */
-    background: rgba(30, 30, 30, 0.8); /* Fundo mais escuro para contraste */
+    background: #000; /* Fundo preto para melhor contraste */
     backdrop-filter: blur(10px);
   }
 
@@ -1429,31 +1435,142 @@ p {
     right: 0;
     top: 60px;
     z-index: 2001; /* Garante que o dropdown fique acima do botão e das seções */
+    background: #000; /* Janela preta para melhor visualização */
   }
 
   /* --- Estilizações Internas Restauradas para Mobile --- */
 
-  /* Tipografia e Layout Home */
+  /* Otimizações Home Mobile */
+  .tech-icons {
+    display: flex; /* Restaurar ícones */
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 12px;
+    flex-wrap: wrap; /* Garante que ícones quebrem linha se necessário */
+  }
+  
+  .tech-icon {
+    font-size: 32px; /* Reduzir tamanho dos ícones */
+  }
+
+  .home {
+    padding-top: 60px; /* Reduzir padding para caber tudo */
+    align-items: flex-start; 
+    height: 100vh;
+    height: 100dvh;
+    overflow-y: auto; /* Garantir scroll */
+  }
+
   .profile-text {
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 0 12px;
   }
 
   .hero-title .name {
-    font-size: 2.8rem;
-    line-height: 1.1;
+    font-size: 2.2rem; 
+    line-height: 1.2;
+    margin-bottom: 8px;
+    white-space: normal; /* Garante quebra de linha */
+    max-width: 100%;
+    padding: 0 10px;
   }
-
+  
   .hero-subtitle {
-    font-size: 1.3rem;
-    margin-top: 16px;
+    font-size: 1.1rem;
+    margin-top: 8px;
+    line-height: 1.4;
+    white-space: normal; /* Garante quebra de linha */
+    max-width: 100%; /* Limita largura ao container */
+    padding: 0 16px; /* Adiciona padding lateral para não colar na borda */
+    box-sizing: border-box;
   }
 
   .hero-description {
-    font-size: 1rem;
-    margin-bottom: 32px;
+    font-size: 0.95rem;
+    margin-bottom: 16px; /* Reduzir margem inferior */
+    line-height: 1.4;
+    padding: 0 16px; /* Aumentei padding lateral */
+    max-height: none; /* Remove limite de altura para não cortar texto longo */
+    overflow: visible;
+    white-space: normal; /* Garante quebra */
+  }
+  
+  .social-links {
+    margin-top: 8px;
+    margin-bottom: 40px; /* Espaço extra no final para garantir visibilidade */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  .social-link {
+    padding: 10px 16px; /* Botões um pouco menores */
+    font-size: 0.9rem;
+  }
+
+  /* Títulos de Seção Mobile (Sobre Mim, Projetos, Contato) - Restaurado */
+  .section-title {
+    /* Mantém estilo original laranja */
+    padding: 10px 0;
+    margin: 0 0 20px 0;
+    width: 100%;
+    border-radius: 20px;
+    text-align: center;
+    border-bottom: none;
+    display: block;
+    background-color: #FF5722; /* Restaurado */
+  }
+
+  .section-title h2 {
+    font-size: 1.8rem;
+    color: #fff; /* Restaurado */
+    margin: 0;
+  }
+
+  /* Ajustes Globais de Texto para Mobile */
+  .text-info p, .intro p, .project-card p, .contact-info p, .skills h3 {
+    white-space: normal;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* Ajuste específico para Skills Title Overflow */
+  .skills h3 {
+    font-size: 1.4rem;
+    margin-bottom: 16px;
+    text-align: center; /* Centralizado novamente */
+    white-space: normal;
+    line-height: 1.3;
+    padding: 0 10px; /* Padding extra */
+  }
+
+  /* Projetos - Restaurado para Coluna mas ajustado */
+  .project-actions {
+    display: flex;
+    flex-direction: column; /* Restaurado para coluna conforme pedido implícito de reversão */
+    gap: 10px;
+    margin-top: 12px;
+    width: 100%;
+  }
+
+  .btn-project {
+    width: 100%; /* Largura total */
+    padding: 12px;
+    font-size: 0.9rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .project-card {
+    padding: 20px;
   }
 
   /* Otimizações Sobre Mim Mobile */
@@ -1467,14 +1584,18 @@ p {
 
   /* Otimizações Sobre Mim Mobile - Imagem separada */
   .profile-image {
-    width: 160px; /* Tamanho controlado do container */
-    height: 160px;
-    margin: 0 auto 24px auto; /* Centraliza */
+    width: 140px; /* Reduzi um pouco mais */
+    height: 140px;
+    margin: 0 auto 16px auto; /* Reduzi margin bottom */
     border-width: 3px;
     box-shadow: 0 5px 20px rgba(0,0,0,0.5);
-    border-radius: 50%; /* Garante que o container seja redondo */
-    overflow: hidden; /* Garante que a img não vaze */
+    border-radius: 50%;
+    overflow: hidden;
     flex-shrink: 0;
+  }
+  
+  #sobre-mim .profile-image {
+    margin-top: 20px; /* Garante que não cole no título */
   }
 
   .profile-image img {
@@ -1520,28 +1641,34 @@ p {
   .skills-group h4 {
     font-size: 1.1rem;
     margin-bottom: 12px;
-    text-align: left;
+    text-align: center;
+    justify-content: center;
     padding-left: 0;
     border-bottom: 1px solid rgba(255,255,255,0.1);
-  }
-
-  .skills-group ul {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Mantém 2 colunas */
-    gap: 8px;
-    width: 100%;
-    padding: 0;
-    box-sizing: border-box;
   }
 
   .skills-group li {
     width: 100%;
     box-sizing: border-box; /* Garante que padding não estoure largura */
-    padding: 10px 6px;
+    padding: 10px 8px;
     font-size: 0.8rem;
-    justify-content: flex-start; /* Alinha ícone e texto à esquerda */
+    justify-content: center; /* Alinha ícone e texto ao centro */
+    text-align: center;
     white-space: normal; /* Permite que texto quebre se necessário */
     height: auto;
+    min-height: 44px; /* Altura mínima para toque */
+    display: flex;
+    align-items: center;
+    line-height: 1.2;
+  }
+  
+  .skills-group ul {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Mantém 2 colunas */
+    gap: 10px;
+    width: 100%;
+    padding: 0;
+    box-sizing: border-box;
   }
 
   .skills-group li:hover {
@@ -1606,12 +1733,15 @@ p {
     margin-top: 12px;
   }
 
+  /* Botões de Projeto - Ajuste de Texto */
   .btn-project {
     width: auto;
     flex: 1 1 45%; /* Ocupa metade menos gap */
     padding: 10px 8px; /* Padding menor */
     font-size: 0.85rem;
-    white-space: nowrap; /* Evita quebra de texto no botão */
+    white-space: normal; /* Permite quebra em botões se muito longo */
+    text-align: center;
+    line-height: 1.2;
   }
 
   .project-card:hover {

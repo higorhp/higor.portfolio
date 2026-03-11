@@ -49,10 +49,38 @@ function changeSection(nextIndex) {
 
         // Exibe a próxima seção
         const nextSection = allSections[nextIndex];
+        
         setTimeout(() => {
+            // FORCE DISPLAY: Garante que o elemento apareça
             nextSection.style.display = nextIndex === 0 ? 'flex' : 'block';
+            nextSection.style.opacity = '1';
+            nextSection.style.visibility = 'visible';
+            nextSection.style.pointerEvents = 'auto';
+            
+            // Correção para Mobile: Força o scroll para o topo e recalcula overflow
+            if (isMobile() && nextIndex !== 0) {
+                // Removemos o overflow hidden do body pois o CSS já lida com isso e pode causar conflito
+                // document.body.style.overflow = 'hidden'; 
+
+                // Tenta destravar o scroll movendo 1px para "acordar" a engine
+                nextSection.scrollTop = 1;
+                if (nextSection.scrollTop !== 0) {
+                     nextSection.scrollTop = 0;
+                }
+                
+                // Hack para forçar reflow e destravar scroll no iOS/Android
+                // Adicionando um pequeno delay para garantir que o display block tenha efeito
+                setTimeout(() => {
+                    nextSection.style.overflowY = 'hidden';
+                    void nextSection.offsetHeight; // Força repaint
+                    nextSection.style.overflowY = 'auto';
+                }, 50);
+            } 
+            // Se for Home (index 0), não precisamos fazer nada pois ela tem scroll nativo ou é fixa
+
             setTimeout(() => {
                 nextSection.classList.add('section-enter-active');
+                // Redundância para garantir
                 nextSection.style.opacity = '1';
             }, 50);
         }, 500);
@@ -286,10 +314,10 @@ const projectData = {
         github: 'https://github.com/higorhp/higor.portfolio'
     },
     'consolidator': {
-        title: 'Consolidador Auto',
-        desc: 'Ferramenta de automação para processar grandes volumes de dados em planilhas Excel. Lê múltiplos arquivos de uma pasta, padroniza as colunas, realiza limpeza de dados e gera um relatório consolidado pronto para análise em BI.',
-        stack: 'Python • Pandas • OpenPyXL • OS',
-        github: 'https://github.com/higorhp'
+        title: '',
+        desc: document.getElementById('desc-consolidator').innerHTML,
+        stack: '',
+        github: 'https://github.com/higorhp/consolidar_automatico/blob/main/Consolidar_planilhas.py'
     }
 };
 

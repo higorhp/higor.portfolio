@@ -200,16 +200,16 @@
                 <div class="project-header">
                     <i class="fa-solid fa-file-excel"></i>
                     <div>
-                        <h3>Consolidador Auto</h3>
-                        <p>Automação Excel</p>
+                        <h3>Consolidador Excel</h3>
+                        <p>Automação Desktop</p>
                     </div>
                 </div>
-                <p>Automação eficiente para unificar múltiplas planilhas e fontes de dados em um único arquivo consolidado.</p>
-                <div class="project-stack">Stack: Python • Pandas • Excel</div>
+                <p>Aplicação desktop com interface gráfica para consolidar múltiplas planilhas Excel, filtrar colunas e eliminar duplicatas automaticamente.</p>
+                <div class="project-stack">Stack: Python • Pandas • Tkinter • OpenPyXL</div>
                 <div class="project-status">Status: <span class="status-dot done"></span> Concluído</div>
                 <div class="project-actions">
                     <a href="javascript:void(0)" onclick="openModal('consolidator')" class="btn-project">Ver detalhes</a>
-                    <a href="https://github.com/higorhp" target="_blank" class="btn-project"><i class="fa-brands fa-github"></i> GitHub</a>
+                    <a href="https://github.com/higorhp/consolidar_automatico/blob/main/Consolidar_planilhas.py" target="_blank" class="btn-project"><i class="fa-brands fa-github"></i> GitHub</a>
                 </div>
             </div>
         </div>
@@ -281,8 +281,10 @@
         </div>
 
         <div style="text-align:center;color:#ddd;margin-bottom:32px;font-size:1rem;line-height:1.6">
-            <p>Aplicação Full Stack desenvolvida para proporcionar controle financeiro completo, permitindo não apenas o registro de transações passadas, mas também a <strong>projeção estratégica do fluxo de caixa futuro</strong>.</p>
-            <p style="margin-top:12px">A plataforma foi projetada com foco em previsibilidade, automação e organização financeira.</p>
+            <p>Aplicação Full Stack desenvolvida para controle financeiro pessoal, permitindo registrar receitas e despesas, além de visualizar e planejar o fluxo de caixa futuro.</p>
+            <p style="margin-top:12px">O projeto surgiu inicialmente como uma forma de testar e aplicar meus conhecimentos em desenvolvimento web, ao mesmo tempo em que buscava resolver uma necessidade pessoal. Eu não encontrava uma ferramenta gratuita que atendesse minhas necessidades de organização financeira e também não considerava o Excel uma ferramenta prática para esse tipo de controle no dia a dia. A partir disso, decidi desenvolver minha própria solução.</p>
+            <p style="margin-top:12px">Com a evolução da ideia, acabei desenvolvendo um site completo para gerenciamento financeiro, com funcionalidades voltadas para organização, acompanhamento de movimentações e melhor visualização do fluxo financeiro.</p>
+            <p style="margin-top:12px">A aplicação foi projetada com foco em simplicidade, previsibilidade financeira e organização dos dados, permitindo que o usuário tenha uma visão mais clara de sua situação financeira e possa planejar melhor suas decisões.</p>
         </div>
 
         <h3 style="margin-bottom:16px;display:flex;align-items:center;gap:10px">🚀 Principais Funcionalidades</h3>
@@ -457,6 +459,54 @@
         </div>
     </template>
     
+    <template id="desc-consolidator">
+        <div class="modal-hero" style="background:transparent;border:none;height:auto;display:flex;justify-content:center;margin-bottom:0">
+            <i class="fa-solid fa-file-excel" style="font-size: 5rem; color: #217346; text-shadow: 0 0 20px rgba(33, 115, 70, 0.5);"></i>
+        </div>
+
+        <div class="modal-header-rich">
+            <h2 class="modal-title-large">Consolidador de Planilhas Excel</h2>
+            <p class="modal-subtitle">Automação Desktop com Interface Gráfica</p>
+            <div class="modal-badges">
+                <span class="modal-badge badge-fullstack" style="background:rgba(33, 115, 70, 0.2);color:#4CAF50;border-color:rgba(33, 115, 70, 0.3)">Desktop App</span>
+                <span class="modal-badge badge-done">Concluído</span>
+            </div>
+        </div>
+
+        <div style="text-align:center;color:#ddd;margin-bottom:32px;font-size:1rem;line-height:1.6">
+            <p>Desenvolvi uma aplicação desktop em <strong>Python</strong> para automatizar o processo de consolidação de múltiplas planilhas Excel em um único arquivo.</p>
+            <p style="margin-top:12px">A ferramenta permite que o usuário selecione diversos arquivos .xlsx ou .xls, escolha dinamicamente quais colunas deseja manter e gere uma planilha consolidada de forma rápida e organizada.</p>
+        </div>
+
+        <h3 style="margin-bottom:16px;display:flex;align-items:center;gap:10px">🚀 Funcionalidades Principais</h3>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <h4><i class="fa-solid fa-layer-group" style="color:#2196F3"></i> Consolidação Dinâmica</h4>
+                <p>Seleção de múltiplos arquivos e escolha interativa de colunas para compor o relatório final.</p>
+            </div>
+            <div class="feature-card">
+                <h4><i class="fa-solid fa-broom" style="color:#FF5722"></i> Limpeza de Dados</h4>
+                <p>Remoção automática de registros duplicados e padronização de formatação.</p>
+            </div>
+            <div class="feature-card">
+                <h4><i class="fa-solid fa-wand-magic-sparkles" style="color:#9C27B0"></i> Estilização Automática</h4>
+                <p>Aplicação de estilos e cabeçalhos formatados no arquivo gerado usando OpenPyXL.</p>
+            </div>
+            <div class="feature-card">
+                <h4><i class="fa-solid fa-desktop" style="color:#4CAF50"></i> Interface Gráfica</h4>
+                <p>Interface amigável construída com Tkinter para facilitar o uso por usuários não técnicos.</p>
+            </div>
+        </div>
+
+        <h3 style="margin-bottom:16px;display:flex;align-items:center;gap:10px">🛠️ Stack Tecnológica</h3>
+        <div class="tech-stack-visual">
+            <span class="tech-chip"><i class="fa-brands fa-python"></i> Python</span>
+            <span class="tech-chip"><i class="fa-solid fa-table"></i> Pandas</span>
+            <span class="tech-chip"><i class="fa-solid fa-window-maximize"></i> Tkinter</span>
+            <span class="tech-chip"><i class="fa-solid fa-file-excel"></i> OpenPyXL</span>
+        </div>
+    </template>
+
     <!-- Modal HTML -->
     <div id="project-modal" class="modal-overlay">
         <div class="modal-content">
