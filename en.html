@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Higor Souza – Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <canvas id="particles-canvas"></canvas>
+
+    <div class="lang-switch" aria-label="Select language">
+        <a href="index.html">PT</a>
+        <span class="lang-sep" aria-hidden="true">|</span>
+        <a href="en.html" class="active" aria-current="page">EN</a>
+    </div>
+
+    <div class="menu">
+        <span class="menu-icon">&#9776;</span>
+        <div class="dropdown">
+            <a href="#home"><i class="fa-solid fa-house"></i><span>Home</span></a>
+            <a href="#about"><i class="fa-solid fa-user"></i><span>About</span></a>
+            <a href="#projects"><i class="fa-solid fa-folder-open"></i><span>Projects</span></a>
+            <a href="#contact"><i class="fa-solid fa-envelope"></i><span>Contact</span></a>
+        </div>
+    </div>
+
+    <main id="main-content">
+        <div class="slides" id="slides">
+            <section class="home slide active" id="home" aria-label="Home - Introduction">
+                <div class="hero-content">
+                    <div class="profile-container">
+                        <div class="profile-text">
+                            <div class="tech-icons" aria-hidden="true">
+                                <i class="fa-brands fa-angular tech-icon angular" title="Angular" aria-hidden="true"></i>
+                                <i class="fa-brands fa-node-js tech-icon nest" title="NestJS (Node)" aria-hidden="true"></i>
+                                <i class="fa-brands fa-js tech-icon typescript" title="TypeScript" aria-hidden="true"></i>
+                                <i class="fa-brands fa-docker tech-icon docker" title="Docker" aria-hidden="true"></i>
+                                <i class="fa-solid fa-database tech-icon sql" title="SQL" aria-hidden="true"></i>
+                            </div>
+                            <h1 class="hero-title">
+                                <span class="greeting">Hi, I'm</span>
+                                <span class="name" id="typing-name"></span>
+                            </h1>
+                            <p class="hero-subtitle">Full-stack development for modern, efficient solutions</p>
+                            <p class="hero-description">Full Stack Developer focused on modern web applications using Angular and NestJS. Experience with TypeScript, REST APIs, Prisma, and Docker to build scalable and well-structured systems.</p>
+                            <div class="social-links">
+                                <a href="curriculo_higor.pdf" target="_blank" class="social-link" aria-label="Open resume PDF">
+                                    <i class="fa-solid fa-file-pdf"></i>
+                                    <span>Resume</span>
+                                </a>
+                                <a href="https://www.linkedin.com/in/higorpachecohp/" target="_blank" class="social-link" aria-label="Visit LinkedIn">
+                                    <i class="fa-brands fa-linkedin"></i>
+                                    <span>LinkedIn</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="profile-image">
+                            <img src="higor.jpeg" alt="Photo of Higor Souza - Systems Analyst" width="350" height="350">
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <div class="sobre-mim" id="about">
+        <div class="section-title">
+            <h2>About Me</h2>
+        </div>
+        <div class="profile-info">
+            <div class="text-info">
+                <section>
+                    <div class="intro">
+                        <h2>Hello!</h2>
+                        <p>My name is Higor Souza and I’m a Full Stack Developer focused on modern web applications.</p>
+                        <p>My journey started with process automation and building solutions to optimize daily tasks. Today I work on web systems using Angular and NestJS, creating applications, APIs, and efficient, scalable integrations.</p>
+                        <p>I have experience with TypeScript, Prisma, Docker, and SQL databases, always aiming to apply best practices and build organized, high-quality solutions.</p>
+                        <p>I’m constantly evolving, exploring new technologies and improving my skills to develop increasingly robust and efficient systems.</p>
+                    </div>
+
+                </section>
+            </div>
+            <div class="profile-image">
+                <img src="higor.jpeg" alt="Photo of Higor Souza">
+            </div>
+        </div>
+
+        <div class="skills" style="margin-top:40px;text-align:center">
+            <h3 style="color:var(--accent);margin-bottom:20px;font-size:1.8rem">Skills & Technologies</h3>
+            <div class="skills-container">
+                <div class="skills-group">
+                    <h4 style="justify-content:center"><i class="fa-solid fa-laptop-code"></i> Web Development</h4>
+                    <ul style="justify-content:center">
+                        <li><i class="fa-brands fa-angular"></i> Angular</li>
+                        <li><i class="fa-brands fa-node-js"></i> NestJS</li>
+                        <li><i class="fa-brands fa-js"></i> TypeScript</li>
+                        <li><i class="fa-solid fa-database"></i> Prisma ORM</li>
+                        <li><i class="fa-solid fa-database"></i> SQL</li>
+                        <li><i class="fa-solid fa-server"></i> API Development</li>
+                    </ul>
+                </div>
+                <div class="skills-group">
+                    <h4 style="justify-content:center"><i class="fa-solid fa-server"></i> Infra & Automation</h4>
+                    <ul style="justify-content:center">
+                        <li><i class="fa-brands fa-docker"></i> Docker</li>
+                        <li><i class="fa-solid fa-cogs"></i> Process Automation</li>
+                        <li><i class="fa-brands fa-python"></i> Python</li>
+                        <li><i class="fa-solid fa-robot"></i> Bot Development</li>
+                        <li><i class="fa-solid fa-bolt"></i> Power Automate</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="projetos" id="projects">
+        <div class="section-title">
+            <h2>Projects</h2>
+        </div>
+        <div class="project-cards">
+            <div class="project-card">
+                <div class="project-header">
+                    <i class="fa-solid fa-chart-line"></i>
+                    <div>
+                        <h3>GranaMind</h3>
+                        <p>Financial Management</p>
+                    </div>
+                </div>
+                <p>Full-stack platform for personal finance tracking focused on organization, predictability, and automation.</p>
+                <div class="project-stack">Stack: React • Node.js • MySQL</div>
+                <div class="project-status">Status: <span class="status-dot done"></span> Completed</div>
+                <div class="project-actions" style="flex-wrap:wrap">
+                    <a href="https://www.granamind.com.br" target="_blank" class="btn-project" style="flex:1 1 100%;background:rgba(76,175,80,0.1);border-color:rgba(76,175,80,0.3);color:#4CAF50"><i class="fa-solid fa-globe"></i> Visit Website</a>
+                    <a href="javascript:void(0)" onclick="openModal('granamind')" class="btn-project">View details</a>
+                    <span class="btn-project btn-disabled" title="Private Repository"><i class="fa-solid fa-lock"></i> Private</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <i class="fa-solid fa-robot"></i>
+                    <div>
+                        <h3>Promotions Bot</h3>
+                        <p>Backend & AI</p>
+                    </div>
+                </div>
+                <p>Backend system for automated price monitoring, product clustering, and optimized deal distribution via WhatsApp/Telegram.</p>
+                <div class="project-stack">Stack: Node.js • TypeScript • Puppeteer</div>
+                <div class="project-status">Status: <span class="status-dot done"></span> Completed</div>
+                <div class="project-actions">
+                    <a href="javascript:void(0)" onclick="openModal('botpromo')" class="btn-project">View details</a>
+                    <span class="btn-project btn-disabled" title="Private Repository"><i class="fa-solid fa-lock"></i> Private</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <i class="fa-solid fa-code"></i>
+                    <div>
+                        <h3>Portfolio Project</h3>
+                        <p>Web Design & UX</p>
+                    </div>
+                </div>
+                <p>Modern interface built with Glassmorphism, interactive animations (Parallax, Typewriter), and smooth SPA navigation.</p>
+                <div class="project-stack">Stack: HTML • CSS • JavaScript</div>
+                <div class="project-status">Status: <span class="status-dot done"></span> Completed</div>
+                <div class="project-actions">
+                    <a href="javascript:void(0)" onclick="openModal('portfolio')" class="btn-project">View details</a>
+                    <a href="https://github.com/higorhp/higor.portfolio" target="_blank" class="btn-project"><i class="fa-brands fa-github"></i> GitHub</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <i class="fa-solid fa-file-excel"></i>
+                    <div>
+                        <h3>Excel Consolidator</h3>
+                        <p>Desktop Automation</p>
+                    </div>
+                </div>
+                <p>Desktop app with a GUI to consolidate multiple Excel sheets, filter columns, and remove duplicates automatically.</p>
+                <div class="project-stack">Stack: Python • Pandas • Tkinter • OpenPyXL</div>
+                <div class="project-status">Status: <span class="status-dot done"></span> Completed</div>
+                <div class="project-actions">
+                    <a href="javascript:void(0)" onclick="openModal('consolidator')" class="btn-project">View details</a>
+                    <a href="https://github.com/higorhp/consolidar_automatico/blob/main/Consolidar_planilhas.py" target="_blank" class="btn-project"><i class="fa-brands fa-github"></i> GitHub</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="contato" id="contact">
+        <div class="contact-header">
+            <div class="status-badge">Focused on growth.</div>
+            <h2 style="font-size:2.5rem;margin:0 0 16px 0">🚀 Let’s talk?</h2>
+            <p style="font-size:1.1rem;color:var(--muted);max-width:600px;margin:0 auto">
+                Continuously growing as a developer and looking to contribute to projects involving technology, innovation, and real impact.
+            </p>
+        </div>
+
+        <div class="contact-grid">
+            <a href="mailto:higorpacheco_@outlook.com" class="contact-card" style="border-color:rgba(255,87,34,0.3);background:rgba(255,87,34,0.05)">
+                <div class="contact-icon-box"><i class="fa-solid fa-envelope"></i></div>
+                <div class="contact-info">
+                    <h4>Email</h4>
+                    <p>higorpacheco_@outlook.com</p>
+                </div>
+            </a>
+            <a href="https://www.linkedin.com/in/higorpachecohp/" target="_blank" class="contact-card">
+                <div class="contact-icon-box"><i class="fa-brands fa-linkedin-in"></i></div>
+                <div class="contact-info">
+                    <h4>LinkedIn</h4>
+                    <p>Connect professionally</p>
+                </div>
+            </a>
+            <a href="https://github.com/higorhp" target="_blank" class="contact-card">
+                <div class="contact-icon-box"><i class="fa-brands fa-github"></i></div>
+                <div class="contact-info">
+                    <h4>GitHub</h4>
+                    <p>Repositories</p>
+                </div>
+            </a>
+            <a href="curriculo_higor.pdf" target="_blank" class="contact-card">
+                <div class="contact-icon-box"><i class="fa-solid fa-file-pdf"></i></div>
+                <div class="contact-info">
+                    <h4>Resume</h4>
+                    <p>Download full CV</p>
+                </div>
+            </a>
+        </div>
+
+        <div class="location-footer">
+            <i class="fa-solid fa-location-dot" style="color:var(--accent)"></i>
+            <span>Cotia, SP, Brazil</span>
+        </div>
+    </div>
+
+    <template id="desc-granamind">
+        <div class="modal-hero" style="background:transparent;border:none;height:auto;display:flex;justify-content:center;margin-bottom:0">
+            <img src="imagens_granamind/logo.jpg" alt="GranaMind Dashboard" style="width:50%;border-radius:12px;margin:0;box-shadow:0 10px 30px rgba(0,0,0,.5)">
+        </div>
+
+        <div class="modal-header-rich">
+            <h2 class="modal-title-large">GranaMind</h2>
+            <p class="modal-subtitle">Smart Personal Finance Manager</p>
+            <div class="modal-badges">
+                <span class="modal-badge badge-fullstack">Full Stack</span>
+                <span class="modal-badge badge-done">Completed</span>
+            </div>
+        </div>
+
+        <div style="text-align:center;color:#ddd;margin-bottom:32px;font-size:1rem;line-height:1.6">
+            <p>Full Stack application built for personal finance control, enabling users to register income and expenses and plan future cash flow.</p>
+            <p style="margin-top:12px">The project started as a way to test and apply my web development skills while solving a personal need. I couldn’t find a free tool that fit my requirements for financial organization, and I also didn’t consider Excel practical for day-to-day tracking. So I decided to build my own solution.</p>
+            <p style="margin-top:12px">As the idea evolved, I developed a complete finance management website with features aimed at organization, transaction tracking, and clearer cash flow visibility.</p>
+            <p style="margin-top:12px">The application was designed with a focus on simplicity, predictability, and data organization—helping users better understand their financial situation and make informed decisions.</p>
+        </div>
+
+        <h3 style="margin-bottom:16px;display:flex;align-items:center;gap:10px">🚀 Key Features</h3>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <h4><i class="fa-solid fa-chart-pie" style="color:#FF5722"></i> Interactive Dashboard</h4>
+                <p>Real-time view of income, expenses, and consolidated balance. Dynamic charts using <strong>Recharts</strong> for clear financial analysis.</p>
+            </div>
+            <div class="feature-card">
+                <h4><i class="fa-solid fa-crystal-ball" style="color:#9C27B0"></i> Forecast Mode</h4>
+                <p>Algorithm that projects future cash flow considering open invoices, installments, and recurring bills (fixed/variable).</p>
+            </div>
+            <div class="feature-card">
+                <h4><i class="fa-solid fa-credit-card" style="color:#2196F3"></i> Card Management</h4>
+                <p>Logic to manage credit limits, automatically associate expenses, and calculate amounts based on statement closing/due dates.</p>
+            </div>
+            <div class="feature-card">
+                <h4><i class="fa-solid fa-sync" style="color:#4CAF50"></i> Automation</h4>
+                <p>Backend structured for automatic monthly entries generation, reducing repetitive manual work.</p>
+            </div>
+            <div class="feature-card" style="grid-column: 1 / -1;">
+                <h4><i class="fa-solid fa-bullseye" style="color:#FFC107"></i> Goal Planning</h4>
+                <p>Goal definition with automatic monthly amount calculation to reach targets on time.</p>
+            </div>
+        </div>
+
+        <h3 style="margin-bottom:16px;display:flex;align-items:center;gap:10px">🛠️ Tech Stack</h3>
+        <div class="tech-stack-visual">
+            <span class="tech-chip"><i class="fa-brands fa-react"></i> React</span>
+            <span class="tech-chip"><i class="fa-brands fa-js"></i> TypeScript</span>
+            <span class="tech-chip"><i class="fa-solid fa-bolt"></i> Vite</span>
+            <span class="tech-chip"><i class="fa-solid fa-wind"></i> Tailwind</span>
+            <span class="tech-chip"><i class="fa-solid fa-layer-group"></i> Shadcn/UI</span>
+            <span class="tech-chip"><i class="fa-solid fa-code-branch"></i> Context API</span>
+            <span class="tech-chip"><i class="fa-brands fa-node"></i> Node.js</span>
+            <span class="tech-chip"><i class="fa-solid fa-server"></i> Express</span>
+            <span class="tech-chip"><i class="fa-solid fa-database"></i> MySQL</span>
+            <span class="tech-chip"><i class="fa-solid fa-shield-alt"></i> JWT</span>
+        </div>
+
+        <h3 style="margin-top:32px;margin-bottom:16px;display:flex;align-items:center;gap:10px">📸 System Gallery</h3>
+        <div class="gallery-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px">
+            <img src="imagens_granamind/Captura de tela 2026-03-02 202042.png" style="cursor:pointer;transition:transform .2s" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" onclick="window.open(this.src,'_blank')">
+            <img src="imagens_granamind/Captura de tela 2026-03-02 202107.png" style="cursor:pointer;transition:transform .2s" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" onclick="window.open(this.src,'_blank')">
+            <img src="imagens_granamind/Captura de tela 2026-03-02 202144.png" style="cursor:pointer;transition:transform .2s" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" onclick="window.open(this.src,'_blank')">
+            <img src="imagens_granamind/Captura de tela 2026-03-02 202226.png" style="cursor:pointer;transition:transform .2s" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" onclick="window.open(this.src,'_blank')">
+            <img src="imagens_granamind/Captura de tela 2026-03-02 202318.png" style="cursor:pointer;transition:transform .2s" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" onclick="window.open(this.src,'_blank')">
+            <img src="imagens_granamind/Captura de tela 2026-03-02 202358.png" style="cursor:pointer;transition:transform .2s" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" onclick="window.open(this.src,'_blank')">
+            <img src="imagens_granamind/Captura de tela 2026-03-02 202429.png" style="cursor:pointer;transition:transform .2s" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" onclick="window.open(this.src,'_blank')">
+        </div>
+    </template>
+
+    <template id="desc-botpromo">
+        <div class="modal-hero" style="background:transparent;border:none;height:auto;display:flex;justify-content:center;margin-bottom:0">
+            <img src="imagens_botpromo/Logo.png" alt="Promotions Bot Logo" style="max-width:200px;border-radius:12px;margin:0;box-shadow:0 10px 30px rgba(0,0,0,.5)">
+        </div>
+
+        <div class="modal-header-rich">
+            <h2 class="modal-title-large">Promotions Bot</h2>
+            <p class="modal-subtitle">Market Intelligence & Monitoring</p>
+            <div class="modal-badges">
+                <span class="modal-badge badge-fullstack" style="background:rgba(156,39,176,0.2);color:#E040FB;border-color:rgba(156,39,176,0.3)">Backend</span>
+                <span class="modal-badge badge-done">Completed</span>
+            </div>
+        </div>
+
+        <div style="text-align:center;color:#ddd;margin-bottom:32px;font-size:1rem;line-height:1.6">
+            <p>Backend system built for automated price monitoring and advanced market analysis. The solution uses <strong>hybrid scraping</strong>, <strong>product clustering</strong>, and statistical analysis to identify real opportunities and distribute optimized deals via WhatsApp and Telegram.</p>
+            <p style="margin-top:12px">The core goal was to build an intelligence layer that filters noise and delivers only relevant deals, avoiding duplicates and false promotions.</p>
+        </div>
+
+        <h3 style="margin-bottom:16px;display:flex;align-items:center;gap:10px">✨ Main Modules</h3>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <h4><i class="fa-solid fa-spider" style="color:#FF5722"></i> Smart Scraping</h4>
+                <p>Hybrid system (Axios/Puppeteer) that extracts flash deals and normalizes price data with anti-block strategies.</p>
+            </div>
+            <div class="feature-card">
+                <h4><i class="fa-solid fa-layer-group" style="color:#2196F3"></i> Clustering & Deduplication</h4>
+                <p>Global grouping algorithm with Fuzzy Matching (Jaro-Winkler) to identify equivalent products and select the best deal.</p>
+            </div>
+            <div class="feature-card">
+                <h4><i class="fa-solid fa-arrow-trend-down" style="color:#F44336"></i> Price Drop Detector</h4>
+                <p>Statistical monitoring of time-series variation, triggering alerts for drops ≥ 20% in 2h or ≥ 30% in 24h.</p>
+            </div>
+            <div class="feature-card">
+                <h4><i class="fa-solid fa-bullhorn" style="color:#4CAF50"></i> Multi-Channel Dispatcher</h4>
+                <p>Niche routing, affiliate link generation, and formatted sending for WhatsApp and Telegram.</p>
+            </div>
+            <div class="feature-card" style="grid-column: 1 / -1;">
+                <h4><i class="fa-solid fa-brain" style="color:#9C27B0"></i> Market Intelligence</h4>
+                <p>Score calculation based on real discount, rarity, and popularity, with granular historical storage for trend analysis.</p>
+            </div>
+        </div>
+
+        <h3 style="margin-bottom:16px;display:flex;align-items:center;gap:10px">🛠️ Architecture & Stack</h3>
+        <div class="tech-stack-visual">
+            <span class="tech-chip"><i class="fa-brands fa-node"></i> Node.js</span>
+            <span class="tech-chip"><i class="fa-brands fa-js"></i> TypeScript</span>
+            <span class="tech-chip"><i class="fa-solid fa-server"></i> Express</span>
+            <span class="tech-chip"><i class="fa-solid fa-database"></i> PostgreSQL</span>
+            <span class="tech-chip"><i class="fa-solid fa-cubes"></i> Prisma ORM</span>
+            <span class="tech-chip"><i class="fa-brands fa-chrome"></i> Puppeteer</span>
+            <span class="tech-chip"><i class="fa-brands fa-whatsapp"></i> Baileys</span>
+            <span class="tech-chip"><i class="fa-brands fa-telegram"></i> Telegraf</span>
+            <span class="tech-chip"><i class="fa-solid fa-clock"></i> node-cron</span>
+            <span class="tech-chip"><i class="fa-solid fa-calculator"></i> decimal.js</span>
+        </div>
+
+        <h3 style="margin-top:32px;margin-bottom:16px;display:flex;align-items:center;gap:10px">🏆 Technical Challenges</h3>
+        <ul style="color:#ccc;line-height:1.6;padding-left:20px;margin:0">
+            <li>Complex title normalization with regex.</li>
+            <li>Advanced anti-detection techniques (Stealth Plugin).</li>
+            <li>Query/index optimization for thousands of concurrent checks.</li>
+            <li>Absolute financial precision with decimal.js.</li>
+        </ul>
+
+        <h3 style="margin-top:32px;margin-bottom:16px;display:flex;align-items:center;gap:10px">📸 System Gallery</h3>
+        <div class="gallery-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px">
+            <img src="imagens_botpromo/Captura de tela 2026-03-03 093416.png" style="cursor:pointer;transition:transform .2s" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" onclick="window.open(this.src,'_blank')">
+            <img src="imagens_botpromo/Captura de tela 2026-03-03 090832.png" style="cursor:pointer;transition:transform .2s" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" onclick="window.open(this.src,'_blank')">
+            <img src="imagens_botpromo/Captura de tela 2026-03-03 091053.png" style="cursor:pointer;transition:transform .2s" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" onclick="window.open(this.src,'_blank')">
+        </div>
+    </template>
+
+    <template id="desc-portfolio">
+        <div class="modal-hero" style="background:transparent;border:none;height:auto;display:flex;justify-content:center;margin-bottom:0">
+            <i class="fa-solid fa-code" style="font-size: 5rem; color: var(--accent); text-shadow: 0 0 20px rgba(255, 87, 34, 0.5);"></i>
+        </div>
+
+        <div class="modal-header-rich">
+            <h2 class="modal-title-large">Personal Portfolio</h2>
+            <p class="modal-subtitle">Interactive & Modern Showcase</p>
+            <div class="modal-badges">
+                <span class="modal-badge badge-fullstack" style="background:rgba(255, 87, 34, 0.2);color:var(--accent);border-color:rgba(255, 87, 34, 0.3)">Frontend</span>
+                <span class="modal-badge badge-done">Completed</span>
+            </div>
+        </div>
+
+        <div style="text-align:center;color:#ddd;margin-bottom:32px;font-size:1rem;line-height:1.6">
+            <p>This portfolio is not only a project showcase, but also a project itself. It was built to demonstrate my native frontend skills, using pure HTML, CSS, and JavaScript to create an interactive and immersive experience.</p>
+            <p style="margin-top:12px">The design follows Glassmorphism, combining transparency, blur effects, and neon elements to create a modern, futuristic, and elegant interface.</p>
+            <p style="margin-top:12px">Beyond presenting my projects, this portfolio reflects my focus on design, user experience, and interface organization—exploring advanced CSS capabilities and JavaScript interactions.</p>
+        </div>
+
+        <h3 style="margin-bottom:16px;display:flex;align-items:center;gap:10px">✨ Project Highlights</h3>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <h4><i class="fa-solid fa-wand-magic-sparkles" style="color:#FF5722"></i> Immersive UX</h4>
+                <p>Parallax background effect (smoothed with Lerp), Typewriter animation, and smooth transitions between sections.</p>
+            </div>
+            <div class="feature-card">
+                <h4><i class="fa-solid fa-layer-group" style="color:#2196F3"></i> SPA Architecture</h4>
+                <p>Single-page navigation without reloads, with dynamic modals for project details.</p>
+            </div>
+            <div class="feature-card">
+                <h4><i class="fa-solid fa-palette" style="color:#E040FB"></i> Design System</h4>
+                <p>Visual consistency with CSS variables, responsive grids, and great support for mobile and ultrawide screens (1600px+).</p>
+            </div>
+            <div class="feature-card">
+                <h4><i class="fa-solid fa-gauge-high" style="color:#4CAF50"></i> Performance</h4>
+                <p>No heavy dependencies. Built with pure HTML/CSS/JS for instant loading.</p>
+            </div>
+        </div>
+
+        <h3 style="margin-bottom:16px;display:flex;align-items:center;gap:10px">🛠️ Tech Stack</h3>
+        <div class="tech-stack-visual">
+            <span class="tech-chip"><i class="fa-brands fa-html5"></i> Semantic HTML5</span>
+            <span class="tech-chip"><i class="fa-brands fa-css3-alt"></i> Advanced CSS3</span>
+            <span class="tech-chip"><i class="fa-brands fa-js"></i> JavaScript (ES6+)</span>
+            <span class="tech-chip"><i class="fa-solid fa-font"></i> Google Fonts</span>
+            <span class="tech-chip"><i class="fa-solid fa-icons"></i> FontAwesome</span>
+        </div>
+    </template>
+    
+    <template id="desc-consolidator">
+        <div class="modal-hero" style="background:transparent;border:none;height:auto;display:flex;justify-content:center;margin-bottom:0">
+            <i class="fa-solid fa-file-excel" style="font-size: 5rem; color: #217346; text-shadow: 0 0 20px rgba(33, 115, 70, 0.5);"></i>
+        </div>
+
+        <div class="modal-header-rich">
+            <h2 class="modal-title-large">Excel Spreadsheet Consolidator</h2>
+            <p class="modal-subtitle">Desktop Automation with GUI</p>
+            <div class="modal-badges">
+                <span class="modal-badge badge-fullstack" style="background:rgba(33, 115, 70, 0.2);color:#4CAF50;border-color:rgba(33, 115, 70, 0.3)">Desktop App</span>
+                <span class="modal-badge badge-done">Completed</span>
+            </div>
+        </div>
+
+        <div style="text-align:center;color:#ddd;margin-bottom:32px;font-size:1rem;line-height:1.6">
+            <p>I built a desktop app in <strong>Python</strong> to automate the process of consolidating multiple Excel spreadsheets into a single file.</p>
+            <p style="margin-top:12px">The tool allows users to select several .xlsx or .xls files, dynamically choose which columns to keep, and generate a consolidated spreadsheet quickly and neatly.</p>
+        </div>
+
+        <h3 style="margin-bottom:16px;display:flex;align-items:center;gap:10px">🚀 Core Features</h3>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <h4><i class="fa-solid fa-layer-group" style="color:#2196F3"></i> Dynamic Consolidation</h4>
+                <p>Multiple file selection and interactive column selection to build the final report.</p>
+            </div>
+            <div class="feature-card">
+                <h4><i class="fa-solid fa-broom" style="color:#FF5722"></i> Data Cleanup</h4>
+                <p>Automatic duplicate removal and formatting standardization.</p>
+            </div>
+            <div class="feature-card">
+                <h4><i class="fa-solid fa-wand-magic-sparkles" style="color:#9C27B0"></i> Automatic Styling</h4>
+                <p>Styles and formatted headers applied to the generated file using OpenPyXL.</p>
+            </div>
+            <div class="feature-card">
+                <h4><i class="fa-solid fa-desktop" style="color:#4CAF50"></i> Graphical Interface</h4>
+                <p>User-friendly interface built with Tkinter for non-technical users.</p>
+            </div>
+        </div>
+
+        <h3 style="margin-bottom:16px;display:flex;align-items:center;gap:10px">🛠️ Tech Stack</h3>
+        <div class="tech-stack-visual">
+            <span class="tech-chip"><i class="fa-brands fa-python"></i> Python</span>
+            <span class="tech-chip"><i class="fa-solid fa-table"></i> Pandas</span>
+            <span class="tech-chip"><i class="fa-solid fa-window-maximize"></i> Tkinter</span>
+            <span class="tech-chip"><i class="fa-solid fa-file-excel"></i> OpenPyXL</span>
+        </div>
+    </template>
+
+    <div id="project-modal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <h2 id="modal-title" style="margin-bottom: 12px; color: var(--accent);"></h2>
+            <div id="modal-desc" style="line-height: 1.6; font-size: 1rem; color: #eee;"></div>
+            <div id="modal-stack" class="modal-stack"></div>
+            <div class="modal-actions">
+                <a href="#" id="modal-github" target="_blank" class="btn-project" style="max-width: 150px;"><i class="fa-brands fa-github"></i> View on GitHub</a>
+            </div>
+        </div>
+    </div>
+    
+
+    <script src="script.js"></script>
+    
+</body>
+
+</html>
+

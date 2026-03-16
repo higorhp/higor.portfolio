@@ -134,11 +134,7 @@ document.querySelectorAll('.dropdown a').forEach(link => {
         const targetId = link.getAttribute('href').substring(1);
         const targetSection = document.getElementById(targetId);
 
-        let targetIndex = -1;
-        if (targetId === 'home') targetIndex = 0;
-        else if (targetId === 'sobre-mim') targetIndex = 1;
-        else if (targetId === 'projetos') targetIndex = 2;
-        else if (targetId === 'contato') targetIndex = 3;
+        let targetIndex = allSections.findIndex(section => section && section.id === targetId);
 
         if (targetIndex !== -1 && targetIndex !== currentSectionIndex) {
             changeSection(targetIndex);
@@ -244,6 +240,27 @@ function showInfo(type) {
 
 
 // Modal Logic
+const currentLang = (document.documentElement.lang || '')
+    .toLowerCase()
+    .startsWith('pt')
+    ? 'pt'
+    : 'en';
+
+const uiText = {
+    pt: {
+        privateRepo: 'Repositório Privado',
+        viewOnGitHub: 'Ver no GitHub',
+        jarvisTitle: 'Projeto Jarvis'
+    },
+    en: {
+        privateRepo: 'Private Repository',
+        viewOnGitHub: 'View on GitHub',
+        jarvisTitle: 'Jarvis Project'
+    }
+};
+
+const t = uiText[currentLang];
+
 const projectData = {
     'granamind': {
         title: '',
@@ -258,7 +275,7 @@ const projectData = {
         github: 'private'
     },
     'jarvis': {
-        title: 'Projeto Jarvis',
+        title: t.jarvisTitle,
         desc: 'Assistente virtual desenvolvido em Python para automação residencial e de tarefas. Utiliza reconhecimento de voz para executar comandos como acender luzes, abrir programas, buscar informações na web e controlar o sistema operacional. Integra APIs de clima, notícias e controle de hardware.',
         stack: 'Python • SpeechRecognition • PyAudio • Requests',
         github: 'https://github.com/higorhp'
@@ -288,11 +305,11 @@ function openModal(projectId) {
     if (data.github === 'private') {
         githubBtn.removeAttribute('href');
         githubBtn.classList.add('btn-disabled');
-        githubBtn.innerHTML = '<i class="fa-solid fa-lock"></i> Repositório Privado';
+        githubBtn.innerHTML = `<i class="fa-solid fa-lock"></i> ${t.privateRepo}`;
     } else {
         githubBtn.href = data.github;
         githubBtn.classList.remove('btn-disabled');
-        githubBtn.innerHTML = '<i class="fa-brands fa-github"></i> Ver no GitHub';
+        githubBtn.innerHTML = `<i class="fa-brands fa-github"></i> ${t.viewOnGitHub}`;
     }
 
     const modal = document.getElementById('project-modal');
